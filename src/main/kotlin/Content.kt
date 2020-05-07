@@ -10,21 +10,40 @@ val siteContent =
       repo = GitHubRepo("readingbat", "readingbat-template")
       srcPath = "python"
 
-      group("Warmup 1") {
-        packageName = "warmup1"
+      group("Group1 1") {
+        packageName = "group2"
         description = "This is a description of Warmup 1"
-        includeFilesWithType = "slice*.py" returns StringType
 
         challenge("boolean1") {
           description = "This description supports **markdown**"
           returnType = BooleanType
         }
+      }
 
+      group("Group 2") {
+        packageName = "group1"
+        description = "This description supports **markdown**"
+        includeFilesWithType = "slice*.py" returns StringType
       }
     }
 
     java {
       repo = GitHubRepo("readingbat", "readingbat-template")
+
+      group("Group1 1") {
+        packageName = "group1"
+        description = "This description supports **markdown**"
+
+        challenge("JoinEnds") {
+          description = "This description supports **markdown**"
+        }
+      }
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "This description supports **markdown**"
+        includeFiles = "Has*.*"
+      }
 
     }
 

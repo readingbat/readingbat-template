@@ -17,3 +17,4 @@ The underlying framework is the [readingbat-core](https://github.com/readingbat/
 * [Java and Kotlin](https://github.com/readingbat/readingbat-java-content)
 * [Python](https://github.com/readingbat/readingbat-python-content)
 
+https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
