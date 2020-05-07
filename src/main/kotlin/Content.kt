@@ -6,12 +6,13 @@ import com.github.readingbat.dsl.readingBatContent
 
 val siteContent =
   readingBatContent {
+
     python {
       repo = GitHubRepo("readingbat", "readingbat-template")
       srcPath = "python"
 
       group("Group1 1") {
-        packageName = "group2"
+        packageName = "group1"
         description = "This is a description of Warmup 1"
 
         challenge("boolean1") {
@@ -21,7 +22,7 @@ val siteContent =
       }
 
       group("Group 2") {
-        packageName = "group1"
+        packageName = "group2"
         description = "This description supports **markdown**"
         includeFilesWithType = "slice*.py" returns StringType
       }
