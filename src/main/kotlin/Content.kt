@@ -6,9 +6,9 @@ import com.github.readingbat.dsl.readingBatContent
 
 val siteContent =
   readingBatContent {
+    repo = GitHubRepo(organizationName = "readingbat", repoName = "readingbat-template")
 
     python {
-      repo = GitHubRepo("readingbat", "readingbat-template")
       srcPath = "python"
 
       group("Group1 1") {
@@ -29,7 +29,6 @@ val siteContent =
     }
 
     java {
-      repo = GitHubRepo("readingbat", "readingbat-template")
 
       group("Group1 1") {
         packageName = "group1"
@@ -49,7 +48,6 @@ val siteContent =
     }
 
     kotlin {
-      repo = GitHubRepo("readingbat", "readingbat-template")
 
     }
 
