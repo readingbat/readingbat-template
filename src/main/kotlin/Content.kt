@@ -1,11 +1,13 @@
-import com.github.pambrose.common.util.GitHubRepo
+import com.github.pambrose.common.util.FileSystemSource
 import com.github.readingbat.dsl.ReturnType.BooleanType
 import com.github.readingbat.dsl.ReturnType.StringType
 import com.github.readingbat.dsl.readingBatContent
 
-val siteContent =
+val content =
   readingBatContent {
-    repo = GitHubRepo(organizationName = "readingbat", repoName = "readingbat-template")
+    //repo = GitHubRepo(organizationName = "readingbat", repoName = "readingbat-template")
+    repo = FileSystemSource("./")
+    cacheChallenges = false
 
     python {
       srcPath = "python"
