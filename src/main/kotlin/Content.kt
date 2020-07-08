@@ -13,7 +13,7 @@ val content =
     python {
       srcPath = "python"
 
-      group("Group1 1") {
+      group("Group 1") {
         packageName = "group1"
         description = "This is a description of Warmup 1"
 
