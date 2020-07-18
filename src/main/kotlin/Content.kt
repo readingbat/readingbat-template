@@ -8,27 +8,6 @@ import com.github.readingbat.dsl.readingBatContent
 val content =
   readingBatContent {
     repo = if (isProduction()) GitHubRepo("readingbat", "readingbat-template") else FileSystemSource("./")
-    cacheChallenges = !isProduction()
-
-    python {
-      srcPath = "python"
-
-      group("Group 1") {
-        packageName = "group1"
-        description = "This is a description of Warmup 1"
-
-        challenge("boolean1") {
-          description = "Descriptions support **markdown**"
-          returnType = BooleanType
-        }
-      }
-
-      group("Group 2") {
-        packageName = "group2"
-        description = "A description"
-        includeFilesWithType = "slice*.py" returns StringType
-      }
-    }
 
     java {
 
@@ -48,6 +27,27 @@ val content =
       }
 
     }
+
+    python {
+      srcPath = "python"
+
+      group("Group 1") {
+        packageName = "group1"
+        description = "This is a description of Group 1"
+
+        challenge("boolean1") {
+          description = "Descriptions support **markdown**"
+          returnType = BooleanType
+        }
+      }
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "A description"
+        includeFilesWithType = "slice*.py" returns StringType
+      }
+    }
+
 
     kotlin {
 
