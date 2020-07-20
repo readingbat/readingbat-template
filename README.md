@@ -31,20 +31,25 @@ Using the DSL requires very little knowledge of Kotlin.
 
 ReadingBat supports challenges written in 3 languages: Python, Java and Kotlin.
 
-Spcify the content in the [src/main/kotlin/Content.kt](./src/main/kotlin/Content.kt) file.
+Specify the content in the [src/main/kotlin/Content.kt](./src/main/kotlin/Content.kt) file.
 
 The structure of the DSL is:
 ```kotlin
 val content = 
   readingBatContent { 
-    python {
-      group("Group 1") {                        // Declare each challenge group
+    python {                                    // Creates a LanguageGroup object
+      group("Group 1") {                        // Creates a ChallengeGroup named "Group 1"
         packageName = "group1"                  // The path of the challenges in this group
         description = "Group description"       // Descriptions support markdown
 
-        challenge("boolean1") {                 // Declare each challenge
-          description = "Challenge description" // Optional
-          returnType = BooleanType              // Required for python challenges
+        challenge("boolean1") {                 // Creates a Challenge for group1/boolean1.py
+          description = "Challenge description" // Optional description of the Challenge
+          returnType = BooleanType              // Challenge return type
+        }
+
+        challenge("boolean2") {                 // Creates a Challenge for group1/boolean2.py
+          description = "Challenge description" // Optional description of the Challenge
+          returnType = BooleanType              // Challenge return type
         }
       }     
 
@@ -91,11 +96,11 @@ val content =
   }
 ```
 
-### Declarations
+### DSL Objects
 
-* [ReadingBatContent](https://github.com/readingbat/readingbat-template/wiki/ReadingBatContent-Declarations)
-* [LanguageGroup](https://github.com/readingbat/readingbat-template/wiki/LanguageGroup-Declarations)
-* [ChallengeGroup](https://github.com/readingbat/readingbat-template/wiki/ChallengeGroup-Declarations)
-* [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Declarations)
+* [ReadingBatContent](https://github.com/readingbat/readingbat-template/wiki/ReadingBatContent-Objects)
+* [LanguageGroup](https://github.com/readingbat/readingbat-template/wiki/LanguageGroup-Objects)
+* [ChallengeGroup](https://github.com/readingbat/readingbat-template/wiki/ChallengeGroup-Objects)
+* [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Objects)
 
 
