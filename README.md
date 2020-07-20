@@ -5,18 +5,31 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/readingbat/readingbat-template)
 [![Run on Repl.it](https://repl.it/badge/github/readingbat/readingbat-template)](https://repl.it/github/readingbat/readingbat-template)
 
-The underlying framework for this template is the [readingbat-core](https://github.com/readingbat/readingbat-core) repo.
+ReadingBat.com is an attempt to make learning how to program a little easier.
+
+We are big fans of [CodingBat.com](https://codingbat.com) (so much so, that we 
+shamelessly copied its look and feel). However, we observed that students often 
+start using it to write code, prior to being equipped with the skill of reading code. 
+It is difficult to write code without first learning how to read and follow code! 
+So we set out to create ReadingBat.com, which attempts to make students comfortable 
+reading code challenges and learning code idioms. Once a student is comfortable with 
+reading code, they can head straight for [CodingBat.com](https://codingbat.com)
+and move on to authoring their own code!
+
+This template is for teachers that want to author their own content. 
+Existing code challenges can be seen at [Readingbat.com](https://www.readingbat.com).
 
 ## Setup
 
-Click on the [![](docs/template_button.png)](https://github.com/readingbat/readingbat-template/generate) 
+* Click on the [![](docs/template_button.png)](https://github.com/readingbat/readingbat-template/generate) 
 button above to clone the template repo and create your own ReadingBat content.
 
-Open the cloned template with [IntelliJ](https://www.jetbrains.com/idea/), [VSCode](https://code.visualstudio.com) 
+* Open the cloned template with [IntelliJ](https://www.jetbrains.com/idea/), [VSCode](https://code.visualstudio.com) 
 or [Gitpod.io](https://gitpod.io). 
-Install and enable the appropriate Kotlin plugin for your dev environment.
 
-Install Redis (optional).
+* Install and enable the appropriate Kotlin plugin for your dev environment.
+
+* Install Redis (optional).
 
 ## [Running a Server](https://github.com/readingbat/readingbat-template/wiki/Running-a-Server)
 
@@ -105,3 +118,7 @@ val content =
 * [Python Code](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
 * [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
 * [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
+
+## Next Steps
+Once you create content for your students, send us a note and we will add it to the 
+[Readingbat.com](https://www.readingbat.com) site.
