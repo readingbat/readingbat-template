@@ -66,14 +66,53 @@ val content =
           returnType = BooleanType              // Required for python challenges
         }
       }     
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "Description of Group 2"  
+        includeFilesWithType = "slice*.py" returns StringType
+      }
     }
 
     java {
+      group("Group1 1") {
+        packageName = "group1"
+        description = "A description"
 
+        challenge("JoinEnds") {
+          description = "A description"
+        }
+      }
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "A description"
+        includeFiles = "Has*.java"
+      }
+    }
+
+    kotlin {
+
+      group("Group1 1") {
+        packageName = "kgroup1"
+        description = "This is a description of Group 1"
+
+        challenge("StringLambda1") {
+          description = "This is a description of StringLambda1"
+          returnType = StringType
+        }
+      }
+
+      group("Group 2") {
+        packageName = "kgroup2"
+        includeFilesWithType = "lambda*.kt" returns StringType
+      }
     }
 
   }
 ```
+
+
 
 
 

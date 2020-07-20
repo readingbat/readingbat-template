@@ -9,27 +9,7 @@ val content =
   readingBatContent {
     repo = if (isProduction()) GitHubRepo("readingbat", "readingbat-template") else FileSystemSource("./")
 
-    java {
-
-      group("Group1 1") {
-        packageName = "group1"
-        description = "A description"
-
-        challenge("JoinEnds") {
-          description = "This description supports **markdown**"
-        }
-      }
-
-      group("Group 2") {
-        packageName = "group2"
-        description = "A description"
-        includeFiles = "Has*.*"
-      }
-
-    }
-
     python {
-      srcPath = "python"
 
       group("Group 1") {
         packageName = "group1"
@@ -48,9 +28,40 @@ val content =
       }
     }
 
+    java {
 
-    kotlin {
+      group("Group1 1") {
+        packageName = "group1"
+        description = "A description"
+
+        challenge("JoinEnds") {
+          description = "This description supports **markdown**"
+        }
+      }
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "A description"
+        includeFiles = "Has*.java"
+      }
 
     }
 
+    kotlin {
+
+      group("Group1 1") {
+        packageName = "kgroup1"
+        description = "This is a description of Group 1"
+
+        challenge("StringLambda1") {
+          description = "This is a description of StringLambda1"
+          returnType = StringType
+        }
+      }
+
+      group("Group 2") {
+        packageName = "kgroup2"
+        includeFilesWithType = "lambda*.kt" returns StringType
+      }
+    }
   }
