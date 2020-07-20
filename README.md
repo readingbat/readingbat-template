@@ -5,7 +5,7 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/readingbat/readingbat-template)
 [![Run on Repl.it](https://repl.it/badge/github/readingbat/readingbat-template)](https://repl.it/github/readingbat/readingbat-template)
 
-ReadingBat.com is an attempt to make learning how to program a little easier.
+[Readingbat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
 
 We are big fans of [CodingBat.com](https://codingbat.com) (so much so, that we 
 shamelessly copied its look and feel). However, we observed that students often 
@@ -17,7 +17,6 @@ reading code, they can head straight for [CodingBat.com](https://codingbat.com)
 and move on to authoring their own code!
 
 This template is for teachers that want to author their own content. 
-Existing code challenges can be seen at [Readingbat.com](https://www.readingbat.com).
 
 ## Setup
 
