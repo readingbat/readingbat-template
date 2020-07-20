@@ -41,7 +41,7 @@ Production mode will cache challenges and parse them only once.
 
 Enable production mode with:
 
-1) Comment out the `ktor.deployment.watch` variable in [application.conf](./src/main/resources/application.conf#L31)
+1) Comment out the `ktor.deployment.watch` variable in [application.conf](/src/main/resources/application.conf#L31)
 
 2) Run the server locally with: `make uber`
 
