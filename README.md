@@ -47,13 +47,7 @@ Enable production mode with:
 
 There are numerous deployment hosting options including: docker, Heroku, repl.it, gitpod.io
 
-## Server Configuration
-
-The [src/resources/application.conf](src/resources/application.conf) file specifies server configuration. 
-
-Important configuration variables:
-* `readingbat.site.production` -- set to true for production
-* `ktor.deployment.watch` -- comment out for production
+## [Server Configuration](wiki/Server-Configuration)
 
 ## Content Specification
 
