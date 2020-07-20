@@ -18,7 +18,7 @@ Install and enable the appropriate Kotlin plugin for your dev environment.
 
 Install Redis (optional).
 
-## [Running](https://github.com/readingbat/readingbat-template/wiki/Running)
+## [Running a Server](https://github.com/readingbat/readingbat-template/wiki/Running-a-Server)
 
 ## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
