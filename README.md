@@ -16,7 +16,7 @@ reading code challenges and learning code idioms. Once a student is comfortable 
 reading code, they can head straight for [CodingBat.com](https://codingbat.com)
 and move on to authoring their own code!
 
-This template is for teachers that want to author their own content. 
+This template is for teachers who want to author their own content. 
 
 ## Setup
 
