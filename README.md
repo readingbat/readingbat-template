@@ -47,7 +47,7 @@ Enable production mode with:
 
 There are numerous deployment hosting options including: docker, Heroku, repl.it, gitpod.io
 
-## [Server Configuration](/wiki/Server-Configuration)
+## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
 ## Content Specification
 
