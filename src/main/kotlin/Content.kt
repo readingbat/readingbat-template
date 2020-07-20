@@ -30,7 +30,7 @@ val content =
 
     java {
 
-      group("Group1 1") {
+      group("Group 1") {
         packageName = "group1"
         description = "A description"
 

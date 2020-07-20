@@ -101,4 +101,7 @@ val content =
 * [ChallengeGroup](https://github.com/readingbat/readingbat-template/wiki/ChallengeGroup-Objects)
 * [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Objects)
 
-
+## Challenge Code
+* [Python Code](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
+* [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
+* [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
