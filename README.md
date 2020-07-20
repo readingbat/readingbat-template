@@ -26,21 +26,20 @@ restarting the server.
 
 To enable development mode with :
 
-1) Uncomment the ```ktor.deployment.watch``` variable in [application.conf](./src/main/resources/application.conf#L31).
+1) Uncomment the `ktor.deployment.watch` variable in [application.conf](./src/main/resources/application.conf#L31).
 
-2) Run the server with: ```make run``` in a terminal window.
+2) Run the server with: `make run` in a terminal window.
 
-3) Compile the code continuously with: ```make cc``` in a different terminal window. This step is optional.
+3) Compile the code continuously with: `make cc` in a different terminal window. This step is optional.
 Without it, you will have to restart the server after changes to the content description file. 
 
 4) View your content at http://0.0.0.0:8080
 
 ### Production Mode
 
-1) Comment out the ```ktor.deployment.watch``` variable in [application.conf](./src/main/resources/application.conf#L31)
+1) Comment out the `ktor.deployment.watch` variable in [application.conf](./src/main/resources/application.conf#L31)
 
-2) Run the server locally with: 
-```make uber```
+2) Run the server locally with: `make uber`
 
 There are numerous deployment hosting options inclusing: docker, Heroku, repl.it, gitpod.io
 
@@ -112,36 +111,36 @@ val content =
 
 ### ReadingBatContent
 
-A `Content.kt` DSL description defines a variable named ```content``` of type `ReadingBatContent`.
-The value is created with a ```readingBatContent {}``` declaration.
+A *Content.kt* DSL description defines a variable named **content** of type `ReadingBatContent`.
+The value is created with a `readingBatContent {}` call.
 
 #### ReadingBatContent Variables:
 | Name            | Default                | Description                                                |
 |-----------------|------------------------|------------------------------------------------------------|
-| repo            | FileSystemSource("./") | Default source for the challenges    |
-| branchName      | "master"               | Default Github branch name of sources |
-| cacheChallenges | !isProduction()        | Determines if challenges are chanced after being read | 
+| repo            | `FileSystemSource("./")` | Default source for the challenges    |
+| branchName      | `"master"`               | Default Github branch name for the sources |
+| cacheChallenges | `!isProduction()`        | Determines if challenges are chanced after being read | 
 
 
 ### LanguageGroups
 
-A ```readingBatContent``` can have 3 ```LanguangeGroups```: python, java, and kotlin.
-Each is created with ```python {}```, ```java {}```, ```kotlin {}``` declarations.
+A `readingBatContent` can have 3 `LanguangeGroups` declarations: python, java, and kotlin.
+Each is created with `python {}`, `java {}`, `kotlin {}` calls.
 
 #### LanguageGroup Variables:
 | Name            | Default                       | Description                                                |
 |-----------------|-------------------------------|------------------------------------------------------------|
-| repo            | ReadingBatContent.repo        | Default source for the challenges    |
-| branchName      | ReadingBatContent.branchName  | Default Github branch name of sources |
+| repo            | ReadingBatContent.repo        | Languages-specific source for the challenges    |
+| branchName      | ReadingBatContent.branchName  | Languages-specific Github branch name for the sources |
 | srcPath         | See below                     |
 
-#### Language srcPath Defaults
+#### LanguageGroup srcPath Defaults
 
 | Language | Default srcPath   |
 |----------|-------------------|
-| python   | "python"          |
-| java     | "src/main/java"   |
-| kotlin   | "src/main/kotlin" |
+| python   | `"python"`          |
+| java     | `"src/main/java"`   |
+| kotlin   | `"src/main/kotlin"` |
 
 
 ### ChallengeGroups
