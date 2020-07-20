@@ -12,13 +12,11 @@ The underlying framework for this template is the [readingbat-core](https://gith
 Click on the [![](docs/template_button.png)](https://github.com/readingbat/readingbat-template/generate) 
 button above to clone the template repo and create your own ReadingBat content.
 
-## Development Environment 
-
 Open the cloned template with [IntelliJ](https://www.jetbrains.com/idea/), [VSCode](https://code.visualstudio.com) 
 or [Gitpod.io](https://gitpod.io). 
 Install and enable the appropriate Kotlin plugin for your dev environment.
 
-Install Redis locally.
+Install Redis (optional).
 
 ## [Running](https://github.com/readingbat/readingbat-template/wiki/Running)
 
