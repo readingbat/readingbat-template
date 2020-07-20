@@ -59,10 +59,10 @@ val content =
     python {
       group("Group 1") {                        // Declare each challenge group
         packageName = "group1"                  // The path of the challenges in this group
-        description = "Description of Group 1"  // Descriptions support markdown
+        description = "Group description"       // Descriptions support markdown
 
         challenge("boolean1") {                 // Declare each challenge
-          description = "boolean1 description"  // Optional
+          description = "Challenge description" // Optional
           returnType = BooleanType              // Required for python challenges
         }
       }     
@@ -77,28 +77,27 @@ val content =
     java {
       group("Group1 1") {
         packageName = "group1"
-        description = "A description"
+        description = "Group description"
 
         challenge("JoinEnds") {
-          description = "A description"
+          description = "Challenge description"
         }
       }
 
       group("Group 2") {
         packageName = "group2"
-        description = "A description"
+        description = "Group description"
         includeFiles = "Has*.java"
       }
     }
 
     kotlin {
-
       group("Group1 1") {
         packageName = "kgroup1"
-        description = "This is a description of Group 1"
+        description = "Group description"
 
         challenge("StringLambda1") {
-          description = "This is a description of StringLambda1"
+          description = "Challenge description"
           returnType = StringType
         }
       }
@@ -108,11 +107,54 @@ val content =
         includeFilesWithType = "lambda*.kt" returns StringType
       }
     }
-
   }
 ```
 
+### ReadingBatContent
 
+A `Content.kt` DSL description defines a variable named ```content``` of type `ReadingBatContent`.
+The value is created with a ```readingBatContent {}``` declaration.
+
+#### ReadingBatContent Variables:
+| Name            | Default                | Description                                                |
+|-----------------|------------------------|------------------------------------------------------------|
+| repo            | FileSystemSource("./") | Default source for the challenges    |
+| branchName      | "master"               | Default Github branch name of sources |
+| cacheChallenges | !isProduction()        | Determines if challenges are chanced after being read | 
+
+
+### LanguageGroups
+
+A ```readingBatContent``` can have 3 ```LanguangeGroups```: python, java, and kotlin.
+Each is created with ```python {}```, ```java {}```, ```kotlin {}``` declarations.
+
+#### LanguageGroup Variables:
+| Name            | Default                       | Description                                                |
+|-----------------|-------------------------------|------------------------------------------------------------|
+| repo            | ReadingBatContent.repo        | Default source for the challenges    |
+| branchName      | ReadingBatContent.branchName  | Default Github branch name of sources |
+| srcPath         | See below                     |
+
+#### Language srcPath Defaults
+
+| Language | Default srcPath   |
+|----------|-------------------|
+| python   | "python"          |
+| java     | "src/main/java"   |
+| kotlin   | "src/main/kotlin" |
+
+
+### ChallengeGroups
+
+### Challenges
+
+
+Python and Kotlin challenges require a `returnType` value. The `returnType` value is inferred at runtime for Java challenges.
+
+Valid types for `returnType` include:
+  BooleanType, IntType, StringType, BooleanArrayType, IntArrayType, StringArrayType, BooleanListType,
+  IntListType, StringListType;
+ 
 
 
 
