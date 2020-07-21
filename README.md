@@ -118,6 +118,19 @@ val content =
 * [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
 * [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
 
+## Example
+
+The ReadingBat.com website combines content from 2 different repos.
+
+### Content.kt Files for ReadingBat.com
+* [Top-level Content.kt](https://github.com/readingbat/readingbat-site/blob/master/src/Content.kt)
+* [Java and Kotlin Content](https://github.com/readingbat/readingbat-java-content/blob/master/src/main/kotlin/Content.kt)
+* [Python Content](https://github.com/readingbat/readingbat-python-content/blob/master/src/Content.kt)
+
+### Code Content Repos for ReadingBat.com
+* [Java and Kotlin](https://github.com/readingbat/readingbat-java-content)
+* [Python](https://github.com/readingbat/readingbat-python-content)
+
 ## Next Steps
 Once you create content for your students, send us a note and we will add it to the 
 [Readingbat.com](https://www.readingbat.com) site.
