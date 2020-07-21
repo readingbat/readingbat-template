@@ -127,8 +127,8 @@ The ReadingBat.com website combines content from 2 different repos.
 * [Java and Kotlin Content](https://github.com/readingbat/readingbat-java-content/blob/master/src/main/kotlin/Content.kt)
 * [Python Content](https://github.com/readingbat/readingbat-python-content/blob/master/src/Content.kt)
 
-### Code Content Repos for ReadingBat.com
-* [Python](https://github.com/readingbat/readingbat-python-content)
+### Code Content for ReadingBat.com
+* [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
 * [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
 * [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
 
