@@ -2,9 +2,6 @@
 
 # ReadingBat Template
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/readingbat/readingbat-template)
-[![Run on Repl.it](https://repl.it/badge/github/readingbat/readingbat-template)](https://repl.it/github/readingbat/readingbat-template)
-
 [Readingbat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
 
 We are big fans of [CodingBat.com](https://codingbat.com) (so much so, that we 
