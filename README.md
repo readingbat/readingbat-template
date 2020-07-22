@@ -16,7 +16,7 @@ reading code challenges and learning code idioms. Once a student is comfortable 
 reading code, they can head straight for [CodingBat.com](https://codingbat.com)
 and move on to authoring their own code!
 
-This template is for teachers who want to author their own content. 
+This template is for teachers who want to author their own ReadingBat content. 
 
 ## Setup
 
@@ -131,6 +131,10 @@ The ReadingBat.com website combines content from 2 different repos.
 * [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
 * [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
 * [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
+
+## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
+
+## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
 
 ## Next Steps
 Once you create content for your students, send us a note and we will add it to the 
