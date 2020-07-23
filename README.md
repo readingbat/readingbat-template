@@ -15,10 +15,12 @@ and move on to authoring their own code!
 
 This template is for teachers who want to author their own ReadingBat content. 
 
+## [Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
+
 ## Setup
 
-* Click on the [![](docs/template_button.png)](https://github.com/readingbat/readingbat-template/generate) 
-button above to clone the template repo and create your own ReadingBat content.
+* Click on the [![](docs/template_button.png) button](https://github.com/readingbat/readingbat-template/generate) 
+above to clone the template repo and create your own ReadingBat content.
 
 * Open the cloned template with [IntelliJ](https://www.jetbrains.com/idea/), [VSCode](https://code.visualstudio.com) 
 or [Gitpod.io](https://gitpod.io). 
