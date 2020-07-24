@@ -1,14 +1,16 @@
-def slice2(s):
+# @desc Description of **slice1.py**
+
+def slice1(s):
     c = s[-1]
     return c
 
 
 def main():
-    print(slice2('Car'))
-    print(slice2('Truck'))
-    print(slice2('55684'))
-    print(slice2('Elephant'))
-    print(slice2('Roses'))
+    print(slice1('Car'))
+    print(slice1('Truck'))
+    print(slice1('55684'))
+    print(slice1('Elephant'))
+    print(slice1('Roses'))
 
 
 if __name__ == '__main__':

@@ -51,8 +51,7 @@ val content =
         packageName = "group1"                  // The path of the challenges in this group
         description = "Group description"       // Descriptions support markdown
 
-        challenge("boolean1") {                 // Creates a Challenge for group1/boolean1.py
-          description = "Challenge description" // Optional description of the Challenge
+        challenge("find_it") {                  // Creates a Challenge for group1/find_it.py
           returnType = BooleanType              // Challenge return type
         }
 
@@ -75,13 +74,13 @@ val content =
         description = "Group description"
 
         challenge("JoinEnds") {
+          // Descriptions embedded in the code are overridden by those in Content.kt
           description = "Challenge description"
         }
       }
 
       group("Group 2") {
         packageName = "group2"
-        description = "Group description"
         includeFiles = "Has*.java"
       }
     }
@@ -92,7 +91,6 @@ val content =
         description = "Group description"
 
         challenge("StringLambda1") {
-          description = "Challenge description"
           returnType = StringType
         }
       }

@@ -1,7 +1,6 @@
 import com.github.pambrose.common.util.FileSystemSource
 import com.github.pambrose.common.util.GitHubRepo
-import com.github.readingbat.dsl.ReturnType.BooleanType
-import com.github.readingbat.dsl.ReturnType.StringType
+import com.github.readingbat.dsl.ReturnType.*
 import com.github.readingbat.dsl.isProduction
 import com.github.readingbat.dsl.readingBatContent
 
@@ -15,8 +14,7 @@ val content =
         packageName = "group1"
         description = "This is a description of Group 1"
 
-        challenge("boolean1") {
-          description = "Descriptions support **markdown**"
+        challenge("find_it") {
           returnType = BooleanType
         }
       }
@@ -35,6 +33,7 @@ val content =
         description = "A description"
 
         challenge("JoinEnds") {
+          // Descriptions in the code are overridden by those in Content.kt
           description = "This description supports **markdown**"
         }
       }
@@ -44,24 +43,22 @@ val content =
         description = "A description"
         includeFiles = "Has*.java"
       }
-
     }
 
     kotlin {
 
-      group("Group1 1") {
+      group("Group 1") {
         packageName = "kgroup1"
         description = "This is a description of Group 1"
 
         challenge("StringLambda1") {
-          description = "This is a description of StringLambda1"
           returnType = StringType
         }
       }
 
       group("Group 2") {
-        packageName = "kgroup2"
-        includeFilesWithType = "lambda*.kt" returns StringType
+        packageName = "kgroup1"
+        includeFilesWithType = "Int*.kt" returns IntType
       }
     }
   }

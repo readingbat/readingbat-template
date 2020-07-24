@@ -2,6 +2,8 @@ package group2;
 
 import static com.github.pambrose.common.util.ArrayUtils.arrayPrint;
 
+// @desc Description of **HasEvens.java**
+
 public class HasEvens {
 
     public static boolean[] hasEvens(int[] vals) {

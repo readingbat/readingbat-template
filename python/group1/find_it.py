@@ -1,3 +1,5 @@
+# @desc Description of **find_it.py**
+
 def find_it(s):
     c = s in 'The Truck missed the car with roses and ran into an Elephant.'
     return c

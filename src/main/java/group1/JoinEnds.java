@@ -1,5 +1,7 @@
 package group1;
 
+// @desc Description of **JoinEnds.java**
+
 public class JoinEnds {
 
     public static String joinEnds(String str) {
