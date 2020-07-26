@@ -17,21 +17,9 @@ This template is for teachers who want to author their own ReadingBat content.
 
 ## [Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
 
-## Setup
-
-* Click on the [![](docs/template_button.png) button](https://github.com/readingbat/readingbat-template/generate) 
-above to clone the template repo and create your own ReadingBat content.
-
-* Open the cloned template with [IntelliJ](https://www.jetbrains.com/idea/), [VSCode](https://code.visualstudio.com) 
-or [Gitpod.io](https://gitpod.io). 
-
-* Install and enable the appropriate Kotlin plugin for your dev environment.
-
-* Install Redis (optional).
+## [Setup](https://github.com/readingbat/readingbat-template/wiki/Setup)
 
 ## [Running a Server](https://github.com/readingbat/readingbat-template/wiki/Running-a-Server)
-
-## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
 ## Content Specification
 
@@ -111,6 +99,7 @@ val content =
 * [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Objects)
 
 ## Challenge Code
+
 * [Python Code](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
 * [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
 * [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
@@ -128,6 +117,8 @@ The ReadingBat.com website combines content from 2 different repos.
 * [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
 * [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
 * [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
+
+## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
 ## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
 
