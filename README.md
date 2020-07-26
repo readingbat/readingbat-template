@@ -106,9 +106,15 @@ val content =
 * [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
 * [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
 
-## Example
+## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
-The ReadingBat.com website combines content from 2 different repos.
+## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
+
+## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
+
+## Examples
+
+The ReadingBat.com website is described in a repo. It combines content from 2 other repos.
 
 ### Content.kt Files for ReadingBat.com
 * [Top-level Content.kt](https://github.com/readingbat/readingbat-site/blob/master/src/Content.kt)
@@ -119,9 +125,3 @@ The ReadingBat.com website combines content from 2 different repos.
 * [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
 * [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
 * [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
-
-## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
-
-## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
-
-## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
