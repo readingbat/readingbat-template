@@ -14,6 +14,8 @@ reading code, they can head straight for [CodingBat.com](https://codingbat.com)
 and move on to authoring their own code!
 
 This template is for teachers who want to author their own ReadingBat content. 
+Once you create content for your students, send us a note and we will link the 
+[Readingbat.com](https://www.readingbat.com) site to it.
 
 ## [Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
 
@@ -123,7 +125,3 @@ The ReadingBat.com website combines content from 2 different repos.
 ## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
 
 ## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
-
-## Next Steps
-Once you create content for your students, send us a note and we will add it to the 
-[Readingbat.com](https://www.readingbat.com) site.
