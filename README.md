@@ -114,7 +114,8 @@ val content =
 
 ## Examples
 
-This [repo](https://github.com/readingbat/readingbat-site) describes the ReadingBat.com website. 
+This [repo](https://github.com/readingbat/readingbat-site) describes the 
+[ReadingBat.com](https://readingbat.com) website. 
 Its Content.kt combines content from 2 other repos.
 
 ### Content.kt Files for ReadingBat.com
