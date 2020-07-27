@@ -26,7 +26,7 @@ Once you create content for your students, send us a note and we will link the
 ## Content Specification
 
 Specify ReadingBat content with a ReadingBat-specific Kotlin DSL. 
-Using the DSL requires very little knowledge of Kotlin.
+Using the DSL does not require in-depth knowledge of Kotlin.
 
 ReadingBat supports challenges written in 3 languages: Python, Java and Kotlin.
 
@@ -39,54 +39,45 @@ val content =
     python {                                    // Creates a LanguageGroup object
       group("Group 1") {                        // Creates a ChallengeGroup named "Group 1"
         packageName = "group1"                  // The path of the challenges in this group
-        description = "Group description"       // Descriptions support markdown
+        description = "Description of **Python** Group 1" // Descriptions support markdown
 
         challenge("find_it") {                  // Creates a Challenge for group1/find_it.py
           returnType = BooleanType              // Challenge return type
         }
 
         challenge("boolean2") {                 // Creates a Challenge for group1/boolean2.py
-          description = "Challenge description" // Optional description of the Challenge
           returnType = BooleanType              // Challenge return type
         }
-      }     
-
-      group("Group 2") {
-        packageName = "group2"
-        description = "Description of Group 2"  
-        includeFilesWithType = "slice*.py" returns StringType
+        
+        // Include all challenges matching the "slice*.py" filename pattern
+        includeFilesWithType = "slice*.py" returns StringType  
       }
     }
 
     java {
-      group("Group1 1") {
+      group("Group 1") {
         packageName = "group1"
-        description = "Group description"
+        description = "Description of **Java** Group 1"
 
-        challenge("JoinEnds") {
-          // Descriptions embedded in the code are overridden by those in Content.kt
-          description = "Challenge description"
-        }
-      }
+        challenge("JoinEnds")                   // Java Return types are inferred from the code
 
-      group("Group 2") {
-        packageName = "group2"
+        challenge("ReplaceCheck")               // Creates a Challenge for group1/ReplaceCheck.java
+
+        // Include all challenges matching the "Has*.java" filename pattern
         includeFiles = "Has*.java"
       }
     }
 
     kotlin {
-      group("Group1 1") {
+      group("Group 1") {
         packageName = "kgroup1"
-        description = "Group description"
+        description = "Description of **Kotlin** Group 1"
 
         challenge("StringLambda1") {
           returnType = StringType
         }
-      }
 
-      group("Group 2") {
-        packageName = "kgroup2"
+        // Include all challenges matching the "lambda*.kt" filename pattern
         includeFilesWithType = "lambda*.kt" returns StringType
       }
     }

@@ -1,4 +1,4 @@
-package group2;
+package group1;
 
 import static com.github.pambrose.common.util.ArrayUtils.arrayPrint;
 

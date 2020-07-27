@@ -12,16 +12,13 @@ val content =
 
       group("Group 1") {
         packageName = "group1"
-        description = "This is a description of Group 1"
+        description = "Description of **Python** Group 1"
 
         challenge("find_it") {
           returnType = BooleanType
         }
-      }
 
-      group("Group 2") {
-        packageName = "group2"
-        description = "A description"
+        // Include all challenges matching the "slice*.py" filename pattern
         includeFilesWithType = "slice*.py" returns StringType
       }
     }
@@ -30,17 +27,11 @@ val content =
 
       group("Group 1") {
         packageName = "group1"
-        description = "A description"
+        description = "Description of **Java** Group 1"
 
-        challenge("JoinEnds") {
-          // Descriptions in the code are overridden by those in Content.kt
-          description = "This description supports **markdown**"
-        }
-      }
+        challenge("JoinEnds")
 
-      group("Group 2") {
-        packageName = "group2"
-        description = "A description"
+        // Include all challenges matching the "Has*.java" filename pattern
         includeFiles = "Has*.java"
       }
     }
@@ -49,15 +40,13 @@ val content =
 
       group("Group 1") {
         packageName = "kgroup1"
-        description = "This is a description of Group 1"
+        description = "Description of **Kotlin** Group 1"
 
         challenge("StringLambda1") {
           returnType = StringType
         }
-      }
 
-      group("Group 2") {
-        packageName = "kgroup1"
+        // Include all challenges matching the "Int*.kt" filename pattern
         includeFilesWithType = "Int*.kt" returns IntType
       }
     }
