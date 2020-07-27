@@ -29,7 +29,9 @@ val content =
         packageName = "group1"
         description = "Description of **Java** Group 1"
 
-        challenge("JoinEnds")
+        challenge("JoinEnds") {                 // Java Return types are inferred from the code
+          codingBatEquiv = "p141494"            // Will add a link to this codingbat.com challenge
+        }
 
         // Include all challenges matching the "Has*.java" filename pattern
         includeFiles = "Has*.java"

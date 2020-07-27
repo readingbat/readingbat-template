@@ -59,7 +59,9 @@ val content =
         packageName = "group1"
         description = "Description of **Java** Group 1"
 
-        challenge("JoinEnds")                   // Java Return types are inferred from the code
+        challenge("JoinEnds") {                 // Java Return types are inferred from the code
+          codingBatEquiv = "p141494"            // Will add a link to this codingbat.com challenge
+        }
 
         challenge("ReplaceCheck")               // Creates a Challenge for group1/ReplaceCheck.java
 
