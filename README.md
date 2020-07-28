@@ -101,10 +101,6 @@ val content =
 
 ## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
 
-## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
-
-## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
-
 ## Examples
 
 This [repo](https://github.com/readingbat/readingbat-site) describes the 
@@ -120,3 +116,8 @@ Its Content.kt combines content from 2 other repos.
 * [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
 * [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
 * [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
+
+## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
+
+## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
+
