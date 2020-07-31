@@ -1,12 +1,16 @@
 import com.github.pambrose.common.util.FileSystemSource
 import com.github.pambrose.common.util.GitHubRepo
+import com.github.pambrose.common.util.OwnerType.Organization
 import com.github.readingbat.dsl.ReturnType.*
 import com.github.readingbat.dsl.isProduction
 import com.github.readingbat.dsl.readingBatContent
 
 val content =
   readingBatContent {
-    repo = if (isProduction()) GitHubRepo("readingbat", "readingbat-template") else FileSystemSource("./")
+    repo = if (isProduction()) GitHubRepo(Organization, "readingbat", "readingbat-template") else FileSystemSource("./")
+    // After cloning this template, you need to change the GitHubRepo args to point to your content.
+    // If user gsmith cloned the template into a repo named my-readingbat-content, the args would look like this:
+    // repo = if (isProduction()) GitHubRepo(User, "gsmith", "my-readingbat-content") else FileSystemSource("./")
 
     python {
 
