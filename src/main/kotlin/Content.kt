@@ -1,9 +1,7 @@
-import com.github.pambrose.common.util.FileSystemSource
-import com.github.pambrose.common.util.GitHubRepo
-import com.github.pambrose.common.util.OwnerType.Organization
+import com.github.pambrose.common.util.*
+import com.github.pambrose.common.util.OwnerType.*
+import com.github.readingbat.dsl.*
 import com.github.readingbat.dsl.ReturnType.*
-import com.github.readingbat.dsl.isProduction
-import com.github.readingbat.dsl.readingBatContent
 
 val content =
   readingBatContent {
