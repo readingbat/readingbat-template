@@ -2,7 +2,7 @@
 
 # ReadingBat Template
 
-[Readingbat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
+[ReadingBat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
 
 We are big fans of [CodingBat.com](https://codingbat.com) (so much so, that we 
 shamelessly copied its look and feel). However, we observed that students often 
@@ -15,7 +15,7 @@ and move on to authoring their own code!
 
 This template is for teachers who want to author their own ReadingBat content. 
 Once you create content for your students, send us a note and we will link the 
-[Readingbat.com](https://www.readingbat.com) site to it.
+[ReadingBat.com](https://www.readingbat.com) site to it.
 
 ## [Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
 
