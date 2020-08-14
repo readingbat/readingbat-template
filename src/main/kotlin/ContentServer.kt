@@ -1,4 +1,4 @@
-import com.github.readingbat.server.ReadingBatServer
+import com.github.readingbat.server.*
 
 object ContentServer {
   @JvmStatic
