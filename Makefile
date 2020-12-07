@@ -8,6 +8,9 @@ compile:
 
 build: compile
 
+tests:
+	./gradlew --rerun-tasks check
+
 uberjar:
 	./gradlew uberjar
 
