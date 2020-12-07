@@ -25,8 +25,8 @@ Once you create content for your students, send us a note and we will link the
 
 ## Content Specification
 
-Specify ReadingBat content with a ReadingBat-specific Kotlin DSL. 
-Using the DSL does not require in-depth knowledge of Kotlin.
+Specify ReadingBat content with the ReadingBat-specific Kotlin DSL. Using the DSL does not require in-depth knowledge of
+Kotlin.
 
 ReadingBat supports challenges written in 3 languages: Python, Java and Kotlin.
 
