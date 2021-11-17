@@ -1,12 +1,13 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.0'
     id "com.github.ben-manes.versions" version "0.39.0"
-    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 repositories {
+    mavenLocal()
     maven { url = 'https://kotlin.bintray.com/ktor' }
     maven { url = 'https://kotlin.bintray.com/kotlinx' }
     maven { url = 'https://kotlin.bintray.com/kotlin-js-wrappers' }
@@ -84,13 +85,13 @@ task uberjar(type: Jar, dependsOn: shadowJar) {
 
 compileKotlin {
     kotlinOptions {
-        useIR = true
+//        useIR = true
         jvmTarget = "1.8"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        useIR = true
+//        useIR = true
         jvmTarget = "1.8"
     }
 }
