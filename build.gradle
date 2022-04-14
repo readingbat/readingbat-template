@@ -1,14 +1,14 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
-    id "com.github.ben-manes.versions" version "0.41.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.6.20'
+    id "com.github.ben-manes.versions" version "0.42.0"
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 repositories {
-    mavenLocal()
     maven { url = 'https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers' }
+    google()
     mavenCentral()
     maven { url = 'https://jitpack.io' }
 }
@@ -81,13 +81,11 @@ task uberjar(type: Jar, dependsOn: shadowJar) {
 
 compileKotlin {
     kotlinOptions {
-//        useIR = true
         jvmTarget = "1.8"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-//        useIR = true
         jvmTarget = "1.8"
     }
 }
