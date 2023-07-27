@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.jetbrains.kotlin.jvm' version '1.8.21'
-    id "com.github.ben-manes.versions" version "0.46.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+    id "com.github.ben-manes.versions" version "0.47.0"
     id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
@@ -20,12 +20,9 @@ application {
     mainClassName = mainName
 }
 
-sourceCompatibility = 17
-targetCompatibility = 17
-
 description 'ReadingBat Site'
 group 'com.github.readingbat'
-version '1.3.0'
+version '1.4.0'
 
 dependencies {
     implementation "com.github.readingbat.readingbat-core:readingbat-core:$readingbat_version"
@@ -33,7 +30,7 @@ dependencies {
     implementation "io.github.microutils:kotlin-logging:$logging_version"
 }
 
-task stage(dependsOn: ['uberjar', 'build', 'clean'])
+tasks.register('stage') { dependsOn['uberjar', 'build', 'clean'] }
 build.mustRunAfter clean
 
 shadowJar {
@@ -45,7 +42,8 @@ shadowJar {
     exclude "LICENSE*"
 }
 
-task uberjar(type: Jar, dependsOn: shadowJar) {
+tasks.register('uberjar', Jar) {
+    dependsOn shadowJar
     zip64 true
     archiveFileName = 'server.jar'
     manifest {
@@ -58,15 +56,8 @@ task uberjar(type: Jar, dependsOn: shadowJar) {
     from zipTree(shadowJar.archiveFile)
 }
 
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+kotlin {
+    jvmToolchain(17)
 }
 
 test {
