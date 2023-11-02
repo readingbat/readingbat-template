@@ -22,7 +22,7 @@ application {
 
 description 'ReadingBat Site'
 group 'com.github.readingbat'
-version '1.4.0'
+version '1.5.0'
 
 dependencies {
     implementation "com.github.readingbat.readingbat-core:readingbat-core:$readingbat_version"
