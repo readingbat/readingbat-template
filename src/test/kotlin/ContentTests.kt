@@ -1,48 +1,44 @@
 import com.github.pambrose.common.util.*
-import com.github.readingbat.TestSupport.answerAllWith
-import com.github.readingbat.TestSupport.answerAllWithCorrectAnswer
-import com.github.readingbat.TestSupport.answerFor
-import com.github.readingbat.TestSupport.forEachAnswer
-import com.github.readingbat.TestSupport.forEachChallenge
-import com.github.readingbat.TestSupport.forEachGroup
-import com.github.readingbat.TestSupport.forEachLanguage
-import com.github.readingbat.TestSupport.javaChallenge
-import com.github.readingbat.TestSupport.kotlinChallenge
-import com.github.readingbat.TestSupport.pythonChallenge
-import com.github.readingbat.TestSupport.shouldHaveAnswer
-import com.github.readingbat.TestSupport.shouldNotHaveAnswer
-import com.github.readingbat.TestSupport.testModule
-import com.github.readingbat.common.*
-import com.github.readingbat.common.Property.*
-import com.github.readingbat.dsl.*
-import com.github.readingbat.posts.*
+import com.github.readingbat.kotest.TestSupport.answerAllWith
+import com.github.readingbat.kotest.TestSupport.answerAllWithCorrectAnswer
+import com.github.readingbat.kotest.TestSupport.answerFor
+import com.github.readingbat.kotest.TestSupport.forEachAnswer
+import com.github.readingbat.kotest.TestSupport.forEachChallenge
+import com.github.readingbat.kotest.TestSupport.forEachGroup
+import com.github.readingbat.kotest.TestSupport.forEachLanguage
+import com.github.readingbat.kotest.TestSupport.javaChallenge
+import com.github.readingbat.kotest.TestSupport.kotlinChallenge
+import com.github.readingbat.kotest.TestSupport.pythonChallenge
+import com.github.readingbat.kotest.TestSupport.shouldHaveAnswer
+import com.github.readingbat.kotest.TestSupport.shouldNotHaveAnswer
+import com.github.readingbat.kotest.TestSupport.testModule
 import com.github.readingbat.posts.AnswerStatus.*
-import com.github.readingbat.server.*
 import io.kotest.core.spec.style.*
 import io.kotest.matchers.*
 import io.kotest.matchers.string.*
-import io.ktor.application.*
-import io.ktor.server.engine.*
 import io.ktor.server.testing.*
 
 class ContentTests : StringSpec({
 
   "Test all challenges" {
-    withTestApplication({ testModule(content) }) {
+    testApplication {
+      application {
+        testModule(content)
+      }
 
       content.forEachLanguage {
         forEachGroup {
           forEachChallenge {
-            answerAllWith(this@withTestApplication, "") {
+            answerAllWith(this@testApplication, "") {
               answerStatus shouldBe NOT_ANSWERED
               hint.shouldBeBlank()
             }
 
-            answerAllWith(this@withTestApplication, "wrong answer") {
+            answerAllWith(this@testApplication, "wrong answer") {
               answerStatus shouldBe INCORRECT
             }
 
-            answerAllWithCorrectAnswer(this@withTestApplication) {
+            answerAllWithCorrectAnswer(this@testApplication) {
               answerStatus shouldBe CORRECT
               hint.shouldBeBlank()
             }
@@ -53,7 +49,11 @@ class ContentTests : StringSpec({
   }
 
   "Test with correct answers" {
-    withTestApplication({ testModule(content) }) {
+    testApplication {
+      application {
+        testModule(content)
+      }
+
       content.forEachLanguage {
         forEachGroup {
           forEachChallenge {
@@ -67,7 +67,11 @@ class ContentTests : StringSpec({
   }
 
   "Test individual challenges" {
-    withTestApplication({ testModule(content) }) {
+    testApplication {
+      application {
+        testModule(content)
+      }
+
       content.pythonChallenge("Group 1", "find_it") {
         answerFor(0) shouldNotHaveAnswer "true"
         answerFor(1) shouldNotHaveAnswer "false"
