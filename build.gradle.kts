@@ -4,7 +4,7 @@ plugins {
   application
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.versions)
-  alias(libs.plugins.shadow)
+  alias(libs.plugins.ktor.plugin)
 }
 
 repositories {
@@ -56,16 +56,22 @@ idea {
 }
 
 tasks.register("stage") {
-  dependsOn("uberjar", "build", "clean")
+  dependsOn("build", "clean")
 }
 
 tasks.named("build") {
   mustRunAfter("clean")
 }
 
+ktor {
+  fatJar {
+    archiveFileName.set("server.jar")
+  }
+}
+
 tasks.shadowJar {
   isZip64 = true
-  mergeServiceFiles()
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
   exclude("META-INF/*.SF")
   exclude("META-INF/*.DSA")
   exclude("META-INF/*.RSA")

@@ -4,12 +4,12 @@
 
 [ReadingBat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
 
-We are big fans of [CodingBat.com](https://codingbat.com) (so much so, that we 
-shamelessly copied its look and feel). However, we observed that students often 
-start using it to write code, prior to being equipped with the skill of reading code. 
+We are big fans of [CodingBat.com](https://codingbat.com) (so much so that we
+shamelessly copied its look and feel). However, we observed that students often
+start using it to write code prior to being equipped with the skill of reading code.
 It is difficult to write code without first learning how to read and follow code! 
-So we set out to create ReadingBat.com, which attempts to make students comfortable 
-reading code challenges and learning code idioms. Once a student is comfortable with 
+So we set out to create ReadingBat.com, which attempts to make students comfortable
+reading code challenges and learning code idioms. Once a student is comfortable
 reading code, they can head straight for [CodingBat.com](https://codingbat.com)
 and move on to authoring their own code!
 
