@@ -1,0 +1,53 @@
+# ReadingBat Template
+
+> A Kotlin/Ktor template for teachers to author ReadingBat.com content — a code-reading practice site where students trace code execution rather than write code. Supports Python, Java, and Kotlin challenges.
+
+## Overview
+
+ReadingBat Template provides a starting point for educators to create their own ReadingBat content. Challenge content is defined using a Kotlin DSL in a single file, and challenge source code lives in language-specific directories. The readingbat-core library handles parsing, answer generation, and web serving.
+
+## Quick Start
+
+- Build: ./gradlew build -xtest
+- Run server: ./gradlew run
+- Run tests: ./gradlew --rerun-tasks check
+- Build fat JAR: ./gradlew uberjar
+
+## Key Files
+
+- src/main/kotlin/Content.kt: Central content definition using the readingBatContent DSL
+- src/main/kotlin/ContentServer.kt: Server entry point (delegates to ReadingBatServer)
+- src/test/kotlin/ContentTests.kt: Kotest-based tests that verify all challenges
+- gradle/libs.versions.toml: Dependency version catalog
+- python/: Python challenge source files
+- src/main/java/: Java challenge source files
+- src/main/kotlin/kgroup1/: Kotlin challenge source files
+
+## Content DSL Structure
+
+readingBatContent {
+  python/java/kotlin {
+    group("Name") {
+      packageName = "directory_name"
+      description = "Markdown description"
+      challenge("FileName") {
+        returnType = StringType|BooleanType|IntType  // required for Python/Kotlin, inferred for Java
+        codingBatEquiv = "pXXXXXX"                   // optional CodingBat cross-reference
+      }
+      includeFiles = "glob*.ext"                     // bulk import (Java, types inferred)
+      includeFilesWithType = "glob*.ext" returns Type // bulk import with explicit return type
+    }
+  }
+}
+
+## Architecture
+
+The repo property in Content.kt switches between GitHubRepo (production, reads from GitHub) and FileSystemSource (local dev, reads from filesystem). Challenge packageName maps directly to filesystem directories. The readingbat-core and readingbat-kotest libraries (from JitPack) provide the DSL, server, and test framework.
+
+## Tech Stack
+
+- Language: Kotlin (JVM 17)
+- Web framework: Ktor
+- Test framework: Kotest (StringSpec style, JUnit5 runner)
+- Build: Gradle with version catalog
+- Deployment: Heroku-compatible (system.properties, fat JAR via shadow plugin)
