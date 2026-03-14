@@ -12,6 +12,7 @@ bin/
 secrets
 .claude/
 .kotlin
+.DS_Store
 
 *.iml
 *.ipr
