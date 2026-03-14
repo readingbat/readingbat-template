@@ -1,4 +1,5 @@
 import com.github.pambrose.common.util.*
+import com.github.readingbat.kotest.TestSupport.initTestProperties
 import com.github.readingbat.kotest.TestSupport.answerAllWith
 import com.github.readingbat.kotest.TestSupport.answerAllWithCorrectAnswer
 import com.github.readingbat.kotest.TestSupport.answerFor
@@ -18,82 +19,85 @@ import io.kotest.matchers.*
 import io.kotest.matchers.string.*
 import io.ktor.server.testing.*
 
-class ContentTests : StringSpec({
+class ContentTests : StringSpec() {
+  init {
+    beforeEach { initTestProperties() }
 
-  "Test all challenges" {
-    testApplication {
-      application {
-        testModule(content)
-      }
+    "Test all challenges" {
+      testApplication {
+        application {
+          testModule(content)
+        }
 
-      content.forEachLanguage {
-        forEachGroup {
-          forEachChallenge {
-            answerAllWith(this@testApplication, "") {
-              answerStatus shouldBe NOT_ANSWERED
-              hint.shouldBeBlank()
-            }
+        content.forEachLanguage {
+          forEachGroup {
+            forEachChallenge {
+              answerAllWith(this@testApplication, "") {
+                answerStatus shouldBe NOT_ANSWERED
+                hint.shouldBeBlank()
+              }
 
-            answerAllWith(this@testApplication, "wrong answer") {
-              answerStatus shouldBe INCORRECT
-            }
+              answerAllWith(this@testApplication, "wrong answer") {
+                answerStatus shouldBe INCORRECT
+              }
 
-            answerAllWithCorrectAnswer(this@testApplication) {
-              answerStatus shouldBe CORRECT
-              hint.shouldBeBlank()
+              answerAllWithCorrectAnswer(this@testApplication) {
+                answerStatus shouldBe CORRECT
+                hint.shouldBeBlank()
+              }
             }
           }
         }
       }
     }
-  }
 
-  "Test with correct answers" {
-    testApplication {
-      application {
-        testModule(content)
-      }
+    "Test with correct answers" {
+      testApplication {
+        application {
+          testModule(content)
+        }
 
-      content.forEachLanguage {
-        forEachGroup {
-          forEachChallenge {
-            forEachAnswer {
-              it shouldHaveAnswer correctAnswers[it.index]
+        content.forEachLanguage {
+          forEachGroup {
+            forEachChallenge {
+              forEachAnswer {
+                it shouldHaveAnswer correctAnswers[it.index]
+              }
             }
           }
         }
       }
     }
-  }
 
-  "Test individual challenges" {
-    testApplication {
-      application {
-        testModule(content)
-      }
+    "Test individual challenges" {
+      testApplication {
+        application {
+          testModule(content)
+        }
 
-      content.pythonChallenge("Group 1", "find_it") {
-        answerFor(0) shouldNotHaveAnswer "true"
-        answerFor(1) shouldNotHaveAnswer "false"
+        content.pythonChallenge("Group 1", "find_it") {
+          answerFor(0) shouldNotHaveAnswer "true"
+          answerFor(1) shouldNotHaveAnswer "false"
 
-        answerFor(0) shouldHaveAnswer "False"
-        answerFor(1) shouldHaveAnswer "True"
-        answerFor(2) shouldHaveAnswer "False"
-        answerFor(3) shouldHaveAnswer "True"
-        answerFor(4) shouldHaveAnswer "False"
-      }
+          answerFor(0) shouldHaveAnswer "False"
+          answerFor(1) shouldHaveAnswer "True"
+          answerFor(2) shouldHaveAnswer "False"
+          answerFor(3) shouldHaveAnswer "True"
+          answerFor(4) shouldHaveAnswer "False"
+        }
 
-      content.javaChallenge("Group 1", "JoinEnds") {
-        answerFor(0) shouldNotHaveAnswer "AB".toDoubleQuoted()
+        content.javaChallenge("Group 1", "JoinEnds") {
+          answerFor(0) shouldNotHaveAnswer "AB".toDoubleQuoted()
 
-        answerFor(0) shouldHaveAnswer "aB".toDoubleQuoted()
-      }
+          answerFor(0) shouldHaveAnswer "aB".toDoubleQuoted()
+        }
 
-      content.kotlinChallenge("Group 1", "StringLambda1") {
-        answerFor(0) shouldNotHaveAnswer "a0".toDoubleQuoted()
+        content.kotlinChallenge("Group 1", "StringLambda1") {
+          answerFor(0) shouldNotHaveAnswer "a0".toDoubleQuoted()
 
-        answerFor(0) shouldHaveAnswer "0a".toDoubleQuoted()
+          answerFor(0) shouldHaveAnswer "0a".toDoubleQuoted()
+        }
       }
     }
   }
-})
+}

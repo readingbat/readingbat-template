@@ -32,6 +32,7 @@ dependencies {
   implementation(libs.kotlin.logging)
 
   // Test dependencies
+  testImplementation(libs.ktor.server.config.yaml)
   testImplementation(libs.ktor.server.test)
   testImplementation(libs.kotest.assertions)
   testImplementation(libs.kotest.runner)

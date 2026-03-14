@@ -14,6 +14,7 @@ core-utils = { group = "com.github.pambrose.common-utils", name = "core-utils", 
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "logging" }
 
 # Test dependencies
+ktor-server-config-yaml = { group = "io.ktor", name = "ktor-server-config-yaml", version.ref = "ktor" }
 ktor-server-test = { group = "io.ktor", name = "ktor-server-test-host", version.ref = "ktor" }
 kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 kotest-runner = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }

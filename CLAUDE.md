@@ -38,11 +38,13 @@ Challenge code lives outside the Kotlin source tree in language-specific directo
 
 ### Server
 
-`src/main/kotlin/ContentServer.kt` — minimal entry point that delegates to `ReadingBatServer.start()` from the `readingbat-core` library.
+`src/main/kotlin/ContentServer.kt` — minimal entry point that delegates to `ReadingBatServer.start()` from the `readingbat-core` library. Server configuration is in `src/main/resources/application.conf` (HOCON format) — controls port (default 8080), production mode, DBMS, content caching, script pool sizes, and Ktor watch mode for hot reload during development.
 
 ### Testing
 
-`src/test/kotlin/ContentTests.kt` — uses Kotest (StringSpec style) with Ktor's `testApplication`. Tests use the `readingbat-kotest` library's `TestSupport` helpers to verify challenges accept correct answers and reject incorrect ones. The test framework iterates over all languages/groups/challenges automatically.
+`src/test/kotlin/ContentTests.kt` — uses Kotest (StringSpec style with `init {}` block) and Ktor's `testApplication`. Tests use the `readingbat-kotest` library's `TestSupport` helpers to verify challenges accept correct answers and reject incorrect ones. The test framework iterates over all languages/groups/challenges automatically.
+
+**Important:** Tests must call `initTestProperties()` before accessing `content` (e.g., via `beforeEach`). This sets `IS_PRODUCTION=false` and `IS_TESTING=true` in the `KtorProperty` config store — without it, `isProduction()` in `Content.kt` will throw `Property IS_PRODUCTION not initialized`.
 
 ## Key Dependencies
 
