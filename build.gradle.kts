@@ -1,6 +1,5 @@
 plugins {
   idea
-  java
   application
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.versions)
@@ -13,12 +12,9 @@ repositories {
   maven { url = uri("https://jitpack.io") }
 }
 
-val mainName = "ContentServer"
-val appName = "server"
-
 // This is for ./gradlew run
 application {
-  mainClass.set(mainName)
+  mainClass = "ContentServerKt"
 }
 
 description = "ReadingBat Site"
@@ -68,15 +64,6 @@ ktor {
   fatJar {
     archiveFileName.set("server.jar")
   }
-}
-
-tasks.shadowJar {
-  isZip64 = true
-  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-  exclude("META-INF/*.SF")
-  exclude("META-INF/*.DSA")
-  exclude("META-INF/*.RSA")
-  exclude("LICENSE*")
 }
 
 tasks.test {

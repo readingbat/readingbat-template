@@ -2,26 +2,49 @@
 
 # ReadingBat Template
 
-[ReadingBat.com](https://www.readingbat.com) is an attempt to make learning how to program a little easier.
+A Kotlin/Ktor template for teachers to author [ReadingBat.com](https://www.readingbat.com) content —
+a code-reading practice site inspired by [CodingBat.com](https://codingbat.com).
 
-We are big fans of [CodingBat.com](https://codingbat.com) (so much so that we
-shamelessly copied its look and feel). However, we observed that students often
-start using it to write code prior to being equipped with the skill of reading code.
-It is difficult to write code without first learning how to read and follow code! 
-So we set out to create ReadingBat.com, which attempts to make students comfortable
-reading code challenges and learning code idioms. Once a student is comfortable
-reading code, they can head straight for [CodingBat.com](https://codingbat.com)
-and move on to authoring their own code!
+ReadingBat helps students learn to **read and trace** code before they start writing it.
+Challenges are defined using a Kotlin DSL and support Python, Java, and Kotlin.
 
-This template is for teachers who want to author their own ReadingBat content. 
-Once you create content for your students, send us a note and we will link the 
-[ReadingBat.com](https://www.readingbat.com) site to it.
+This template lets you create your own ReadingBat content. Once it's ready,
+send us a note and we'll link [ReadingBat.com](https://www.readingbat.com) to it.
 
-## [Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
+## Prerequisites
 
-## [Setup](https://github.com/readingbat/readingbat-template/wiki/Setup)
+- **Java 17+** (the project uses a JVM 17 toolchain)
+- **Git** (to clone the repo and manage content)
 
-## [Running a Server](https://github.com/readingbat/readingbat-template/wiki/Running-a-Server)
+> Gradle is included via the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) — no separate install needed.
+
+## Getting Started
+
+```bash
+git clone https://github.com/readingbat/readingbat-template.git
+cd readingbat-template
+./gradlew build -x test   # compile without running tests
+./gradlew run              # start the server on http://localhost:8080
+```
+
+See the wiki for more details:
+[Quickstart](https://github.com/readingbat/readingbat-template/wiki/Quickstart)
+| [Setup](https://github.com/readingbat/readingbat-template/wiki/Setup)
+| [Running a Server](https://github.com/readingbat/readingbat-template/wiki/Running-a-Server)
+
+## Build & Run Commands
+
+| Command | Description |
+|---------|-------------|
+| `./gradlew build -x test` | Compile without tests |
+| `./gradlew run` | Start the dev server (port 8080) |
+| `./gradlew --rerun-tasks check` | Run all tests |
+| `./gradlew test --tests "ContentTests"` | Run a single test class |
+| `./gradlew uberjar` | Build a fat JAR (`build/libs/server.jar`) |
+| `./gradlew build --continuous -x test` | Continuous compile on file changes |
+| `./gradlew dependencyUpdates` | Check for dependency updates |
+
+A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, etc.).
 
 ## Content Specification
 
@@ -88,36 +111,48 @@ val content =
 
 ### DSL Objects
 
-* [ReadingBatContent](https://github.com/readingbat/readingbat-template/wiki/ReadingBatContent-Objects)
-* [LanguageGroup](https://github.com/readingbat/readingbat-template/wiki/LanguageGroup-Objects)
-* [ChallengeGroup](https://github.com/readingbat/readingbat-template/wiki/ChallengeGroup-Objects)
-* [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Objects)
+- [ReadingBatContent](https://github.com/readingbat/readingbat-template/wiki/ReadingBatContent-Objects)
+- [LanguageGroup](https://github.com/readingbat/readingbat-template/wiki/LanguageGroup-Objects)
+- [ChallengeGroup](https://github.com/readingbat/readingbat-template/wiki/ChallengeGroup-Objects)
+- [Challenge](https://github.com/readingbat/readingbat-template/wiki/Challenge-Objects)
 
 ## Challenge Code
 
-* [Python Code](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
-* [Java Code](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
-* [Kotlin Code](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
+Challenge source files live in language-specific directories:
 
-## [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration)
+| Language | Directory | Example |
+|----------|-----------|---------|
+| Python | `python/<packageName>/` | `python/group1/find_it.py` |
+| Java | `src/main/java/<packageName>/` | `src/main/java/group1/JoinEnds.java` |
+| Kotlin | `src/main/kotlin/<packageName>/` | `src/main/kotlin/kgroup1/StringLambda1.kt` |
+
+Wiki references:
+[Python](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
+| [Java](https://github.com/readingbat/readingbat-template/wiki/Java-Challenges)
+| [Kotlin](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Challenges)
+
+## Server Configuration
+
+Server settings are in [`src/main/resources/application.conf`](./src/main/resources/application.conf) (HOCON format).
+See the [Server Configuration](https://github.com/readingbat/readingbat-template/wiki/Server-Configuration) wiki page for details.
 
 ## Examples
 
-This [repo](https://github.com/readingbat/readingbat-site) describes the 
-[ReadingBat.com](https://readingbat.com) website. 
-Its Content.kt combines content from 2 other repos.
+The [readingbat-site](https://github.com/readingbat/readingbat-site) repo powers
+[ReadingBat.com](https://readingbat.com) and combines content from multiple repos:
 
-### Content.kt Files for ReadingBat.com
-* [Top-level Content.kt](https://github.com/readingbat/readingbat-site/blob/master/src/Content.kt)
-* [Java and Kotlin Content](https://github.com/readingbat/readingbat-java-content/blob/master/src/main/kotlin/Content.kt)
-* [Python Content](https://github.com/readingbat/readingbat-python-content/blob/master/src/Content.kt)
+**Content.kt files:**
+- [Top-level Content.kt](https://github.com/readingbat/readingbat-site/blob/master/src/Content.kt)
+- [Java and Kotlin Content](https://github.com/readingbat/readingbat-java-content/blob/master/src/main/kotlin/Content.kt)
+- [Python Content](https://github.com/readingbat/readingbat-python-content/blob/master/src/Content.kt)
 
-### Code Content for ReadingBat.com
-* [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
-* [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
-* [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
+**Challenge source code:**
+- [Python](https://github.com/readingbat/readingbat-python-content/tree/master/python)
+- [Java](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/java)
+- [Kotlin](https://github.com/readingbat/readingbat-java-content/tree/master/src/main/kotlin)
 
-## [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
+## More Resources
 
-## [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
+- [Kotlin Tips](https://github.com/readingbat/readingbat-template/wiki/Kotlin-Tips)
+- [GitHub Tips](https://github.com/readingbat/readingbat-template/wiki/GitHub-Tips)
 
