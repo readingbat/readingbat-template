@@ -4,7 +4,7 @@ clean:
 	./gradlew clean
 
 compile:
-	./gradlew build -xtest
+	./gradlew build -x test
 
 build: compile
 
@@ -33,4 +33,4 @@ versioncheck:
 	./gradlew dependencyUpdates
 
 upgrade-wrapper:
-	./gradlew wrapper --gradle-version=9.4.0 --distribution-type=bin
+	./gradlew wrapper --gradle-version=9.4.1 --distribution-type=bin
