@@ -1,5 +1,4 @@
-import com.github.pambrose.common.util.*
-import com.github.readingbat.kotest.TestSupport.initTestProperties
+import com.github.pambrose.common.util.toDoubleQuoted
 import com.github.readingbat.kotest.TestSupport.answerAllWith
 import com.github.readingbat.kotest.TestSupport.answerAllWithCorrectAnswer
 import com.github.readingbat.kotest.TestSupport.answerFor
@@ -7,16 +6,19 @@ import com.github.readingbat.kotest.TestSupport.forEachAnswer
 import com.github.readingbat.kotest.TestSupport.forEachChallenge
 import com.github.readingbat.kotest.TestSupport.forEachGroup
 import com.github.readingbat.kotest.TestSupport.forEachLanguage
+import com.github.readingbat.kotest.TestSupport.initTestProperties
 import com.github.readingbat.kotest.TestSupport.javaChallenge
 import com.github.readingbat.kotest.TestSupport.kotlinChallenge
 import com.github.readingbat.kotest.TestSupport.pythonChallenge
 import com.github.readingbat.kotest.TestSupport.shouldHaveAnswer
 import com.github.readingbat.kotest.TestSupport.shouldNotHaveAnswer
 import com.github.readingbat.kotest.TestSupport.testModule
-import com.github.readingbat.posts.AnswerStatus.*
-import io.kotest.core.spec.style.*
-import io.kotest.matchers.*
-import io.kotest.matchers.string.*
+import com.github.readingbat.posts.AnswerStatus.CORRECT
+import com.github.readingbat.posts.AnswerStatus.INCORRECT
+import com.github.readingbat.posts.AnswerStatus.NOT_ANSWERED
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.string.shouldBeBlank
 import io.ktor.server.testing.*
 
 class ContentTests : StringSpec() {
