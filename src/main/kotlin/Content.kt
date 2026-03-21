@@ -1,7 +1,11 @@
-import com.github.pambrose.common.util.*
-import com.github.pambrose.common.util.OwnerType.*
-import com.github.readingbat.dsl.*
-import com.github.readingbat.dsl.ReturnType.*
+import com.github.pambrose.common.util.FileSystemSource
+import com.github.pambrose.common.util.GitHubRepo
+import com.github.pambrose.common.util.OwnerType.Organization
+import com.github.readingbat.dsl.ReturnType.BooleanType
+import com.github.readingbat.dsl.ReturnType.IntType
+import com.github.readingbat.dsl.ReturnType.StringType
+import com.github.readingbat.dsl.isProduction
+import com.github.readingbat.dsl.readingBatContent
 
 val content =
   readingBatContent {
@@ -19,6 +23,12 @@ val content =
         challenge("find_it") {
           returnType = BooleanType
         }
+
+      }
+
+      group("Group 2") {
+        packageName = "group2"
+        description = "Description of **Python** Group 2"
 
         // Include all challenges matching the "slice*.py" filename pattern
         includeFilesWithType = "slice*.py" returns StringType

@@ -25,26 +25,19 @@ version = "1.6.0"
 
 dependencies {
   implementation(libs.readingbat.core)
-  implementation(libs.readingbat.kotest)
   implementation(libs.core.utils)
   implementation(libs.kotlin.logging)
 
   // Test dependencies
+  testImplementation(libs.readingbat.kotest)
   testImplementation(libs.ktor.server.config.yaml)
   testImplementation(libs.ktor.server.test)
   testImplementation(libs.kotest.assertions)
   testImplementation(libs.kotest.runner)
-
-  testImplementation(kotlin("test"))
 }
 
 kotlin {
   jvmToolchain(17)
-
-  configurations.all {
-    resolutionStrategy.cacheChangingModulesFor(0, "seconds")
-  }
-
 }
 
 idea {
@@ -55,7 +48,7 @@ idea {
 }
 
 tasks.register("stage") {
-  dependsOn("build", "clean")
+  dependsOn("clean", "build")
 }
 
 tasks.named("build") {
@@ -85,4 +78,8 @@ tasks.test {
     exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     showStandardStreams = true
   }
+}
+
+configurations.all {
+  resolutionStrategy.cacheChangingModulesFor(0, "seconds")
 }
