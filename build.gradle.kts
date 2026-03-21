@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
   idea
   application
@@ -66,11 +68,20 @@ ktor {
   }
 }
 
+tasks.shadowJar {
+  isZip64 = true
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+  exclude("META-INF/*.SF")
+  exclude("META-INF/*.DSA")
+  exclude("META-INF/*.RSA")
+  exclude("LICENSE*")
+}
+
 tasks.test {
   useJUnitPlatform()
 
   testLogging {
-    events("passed", "skipped", "failed", "standardOut", "standardError")
+    events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
     exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     showStandardStreams = true
   }
