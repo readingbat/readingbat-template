@@ -1,9 +1,9 @@
 [versions]
-kotest = "6.1.7"
+kotest = "6.1.10"
 kotlin = "2.3.20"
-ktor = "3.4.1"
+ktor = "3.4.2"
 logging = "8.0.01"
-readingbat = "3.0.5"
+readingbat = "3.0.11"
 utils = "2.6.3"
 versions = "0.53.0"
 
