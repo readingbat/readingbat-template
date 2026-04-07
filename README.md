@@ -23,8 +23,8 @@ send us a note and we'll link [ReadingBat.com](https://www.readingbat.com) to it
 ```bash
 git clone https://github.com/readingbat/readingbat-template.git
 cd readingbat-template
-./gradlew build -x test   # compile without running tests
-./gradlew run              # start the server on http://localhost:8080
+./gradlew build -xtest   # compile without running tests
+./gradlew run            # start the server on http://localhost:8080
 ```
 
 See the wiki for more details:
@@ -36,12 +36,12 @@ See the wiki for more details:
 
 | Command | Description |
 |---------|-------------|
-| `./gradlew build -x test` | Compile without tests |
+| `./gradlew build -xtest` | Compile without tests |
 | `./gradlew run` | Start the dev server (port 8080) |
 | `./gradlew --rerun-tasks check` | Run all tests |
 | `./gradlew test --tests "ContentTests"` | Run a single test class |
 | `./gradlew uberjar` | Build a fat JAR (`build/libs/server.jar`) |
-| `./gradlew build --continuous -x test` | Continuous compile on file changes |
+| `./gradlew build --continuous -xtest` | Continuous compile on file changes |
 | `./gradlew dependencyUpdates` | Check for dependency updates |
 
 A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, etc.).

@@ -1,25 +1,25 @@
 [versions]
-kotest = "6.1.10"
+kotest = "6.1.11"
 kotlin = "2.3.20"
 ktor = "3.4.2"
 logging = "8.0.01"
-readingbat = "3.0.11"
-utils = "2.6.3"
+readingbat = "3.1.1"
+utils = "2.7.1"
 versions = "0.53.0"
 
 [libraries]
-readingbat-core = { module = "com.github.readingbat.readingbat-core:readingbat-core", version.ref = "readingbat" }
-readingbat-kotest = { module = "com.github.readingbat.readingbat-core:readingbat-kotest", version.ref = "readingbat" }
-core-utils = { group = "com.github.pambrose.common-utils", name = "core-utils", version.ref = "utils" }
+core-utils = { group = "com.pambrose.common-utils", name = "core-utils", version.ref = "utils" }
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "logging" }
+readingbat-core = { module = "com.readingbat:readingbat-core", version.ref = "readingbat" }
+readingbat-kotest = { module = "com.readingbat:readingbat-kotest", version.ref = "readingbat" }
 
 # Test dependencies
-ktor-server-config-yaml = { group = "io.ktor", name = "ktor-server-config-yaml", version.ref = "ktor" }
-ktor-server-test = { group = "io.ktor", name = "ktor-server-test-host", version.ref = "ktor" }
 kotest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 kotest-runner = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
+ktor-server-config-yaml = { group = "io.ktor", name = "ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-test = { group = "io.ktor", name = "ktor-server-test-host", version.ref = "ktor" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
 ktor-plugin = { id = "io.ktor.plugin", version.ref = "ktor" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

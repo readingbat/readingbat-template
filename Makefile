@@ -4,7 +4,7 @@ clean:
 	./gradlew clean
 
 compile:
-	./gradlew build -x test
+	./gradlew build -xtest
 
 build: compile
 
@@ -18,7 +18,7 @@ uber: uberjar
 	java -jar build/libs/server.jar
 
 cc:
-	./gradlew build --continuous -x test
+	./gradlew build --continuous -xtest
 
 run:
 	./gradlew run
