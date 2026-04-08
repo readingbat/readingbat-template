@@ -19,7 +19,7 @@ application {
 }
 
 description = "ReadingBat Site"
-group = "com.github.readingbat"
+group = "com.readingbat"
 version = "1.6.0"
 
 dependencies {
@@ -77,8 +77,4 @@ tasks.test {
     exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     showStandardStreams = true
   }
-}
-
-configurations.all {
-  resolutionStrategy.cacheChangingModulesFor(0, "seconds")
 }
