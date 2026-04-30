@@ -8,11 +8,6 @@ plugins {
   alias(libs.plugins.ktor.plugin)
 }
 
-repositories {
-  google()
-  mavenCentral()
-}
-
 // This is for ./gradlew run
 application {
   mainClass = "ContentServerKt"
