@@ -18,7 +18,11 @@ ReadingBat Template provides a starting point for educators to create their own 
 - src/main/kotlin/Content.kt: Central content definition using the readingBatContent DSL
 - src/main/kotlin/ContentServer.kt: Server entry point (delegates to ReadingBatServer)
 - src/test/kotlin/ContentTests.kt: Kotest-based tests that verify all challenges
-- gradle/libs.versions.toml: Dependency version catalog
+- build.gradle.kts: Gradle build script (group/version live in gradle.properties)
+- gradle.properties: Project group and version
+- settings.gradle.kts: Repository configuration with FAIL_ON_PROJECT_REPOS enforcement
+- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group
+- CHANGELOG.md / RELEASE_NOTES.md: Release history and per-version notes
 - python/: Python challenge source files
 - src/main/java/: Java challenge source files
 - src/main/kotlin/kgroup1/: Kotlin challenge source files
@@ -42,12 +46,13 @@ readingBatContent {
 
 ## Architecture
 
-The repo property in Content.kt switches between GitHubRepo (production, reads from GitHub) and FileSystemSource (local dev, reads from filesystem). Challenge packageName maps directly to filesystem directories. The readingbat-core and readingbat-kotest libraries (from JitPack) provide the DSL, server, and test framework.
+The repo property in Content.kt switches between GitHubRepo (production, reads from GitHub) and FileSystemSource (local dev, reads from filesystem). Challenge packageName maps directly to filesystem directories. The readingbat-core and readingbat-kotest libraries (from Maven Central) provide the DSL, server, and test framework. Test dependencies are exposed as the libs.bundles.testing bundle in libs.versions.toml.
 
 ## Tech Stack
 
 - Language: Kotlin (JVM 17)
 - Web framework: Ktor
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
-- Build: Gradle with version catalog
+- Build: Gradle 9.5.0 with version catalog (libs.versions.toml) and properties-driven version
 - Deployment: Heroku-compatible (system.properties, fat JAR via shadow plugin)
+- Current version: 1.7.0
