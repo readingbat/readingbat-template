@@ -49,10 +49,14 @@ Challenge code lives outside the Kotlin source tree in language-specific directo
 ## Key Dependencies
 
 Managed in `gradle/libs.versions.toml`:
-- `readingbat-core` / `readingbat-kotest` — core DSL, server, and test framework (from JitPack)
+- `readingbat-core` / `readingbat-kotest` — core DSL, server, and test framework (Maven Central)
 - Ktor — web server framework
 - Kotest — test framework (JUnit5 runner)
 - JVM toolchain: Java 17
+
+Test dependencies are exposed as a `[bundles] testing` entry and consumed in `build.gradle.kts` via `libs.bundles.testing`.
+
+`group` and `version` live in `gradle.properties` (not `build.gradle.kts`). Repository configuration lives in `settings.gradle.kts` with `FAIL_ON_PROJECT_REPOS` enforcement — do not add per-project repositories to `build.gradle.kts`.
 
 ## DSL Conventions
 

@@ -1,7 +1,6 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
-  idea
   application
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.versions)
@@ -14,31 +13,17 @@ application {
 }
 
 description = "ReadingBat Site"
-group = "com.readingbat"
-version = "1.6.0"
 
 dependencies {
   implementation(libs.readingbat.core)
   implementation(libs.core.utils)
   implementation(libs.kotlin.logging)
 
-  // Test dependencies
-  testImplementation(libs.readingbat.kotest)
-  testImplementation(libs.ktor.server.config.yaml)
-  testImplementation(libs.ktor.server.test)
-  testImplementation(libs.kotest.assertions)
-  testImplementation(libs.kotest.runner)
+  testImplementation(libs.bundles.testing)
 }
 
 kotlin {
   jvmToolchain(17)
-}
-
-idea {
-  module {
-    isDownloadSources = true
-    isDownloadJavadoc = true
-  }
 }
 
 tasks.register("stage") {
@@ -49,13 +34,8 @@ tasks.named("build") {
   mustRunAfter("clean")
 }
 
-ktor {
-  fatJar {
-    archiveFileName.set("server.jar")
-  }
-}
-
 tasks.shadowJar {
+  archiveFileName.set("server.jar")
   isZip64 = true
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
   exclude("META-INF/*.SF")
@@ -70,6 +50,6 @@ tasks.test {
   testLogging {
     events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
     exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-    showStandardStreams = true
+    showStandardStreams = false
   }
 }

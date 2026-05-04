@@ -46,6 +46,9 @@ See the wiki for more details:
 
 A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, etc.).
 
+> Project metadata (`group`, `version`) is set in [`gradle.properties`](./gradle.properties).
+> Dependency versions and the `testing` bundle are defined in [`gradle/libs.versions.toml`](./gradle/libs.versions.toml).
+
 ## Content Specification
 
 Specify ReadingBat content with the ReadingBat-specific Kotlin DSL. Using the DSL does not require in-depth knowledge of
