@@ -50,6 +50,6 @@ tasks.test {
   testLogging {
     events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
     exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-    showStandardStreams = true
+    showStandardStreams = false
   }
 }
