@@ -7,12 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-05-03
+
 ### Changed
 
+- Moved `group` and `version` from `build.gradle.kts` to `gradle.properties`.
 - Consolidated fat-jar configuration into a single `tasks.shadowJar` block; removed the redundant `ktor.fatJar` block.
 - Standardized dependency coordinate style in `libs.versions.toml` to use `module = "group:name"` consistently.
 - Grouped test dependencies into a `[bundles] testing` entry; `build.gradle.kts` now references `libs.bundles.testing`.
 - Bumped `kotlin-logging` to 8.0.02, `readingbat` to 3.1.5, and `core-utils` to 2.8.2.
+- Updated `README.md` and `CLAUDE.md` to document the new gradle layout (properties, settings, and the testing bundle).
+
+### Added
+
+- `CHANGELOG.md` and `RELEASE_NOTES.md`.
 
 ### Removed
 
@@ -48,5 +56,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrades to Kotlin 2.1.0 / Ktor 3.0.1, `readingbat-core` 2.0.0, and various jar refreshes.
 
-[Unreleased]: https://github.com/readingbat/readingbat-template/compare/1.6.0...HEAD
+[Unreleased]: https://github.com/readingbat/readingbat-template/compare/1.7.0...HEAD
+[1.7.0]: https://github.com/readingbat/readingbat-template/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/readingbat/readingbat-template/releases/tag/1.6.0

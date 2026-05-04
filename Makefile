@@ -1,12 +1,12 @@
+.PHONY: default clean build tests uberjar uber cc run heroku logs versioncheck upgrade-wrapper
+
 default: versioncheck
 
 clean:
 	./gradlew clean
 
-compile:
+build:
 	./gradlew build -xtest
-
-build: compile
 
 tests:
 	./gradlew --rerun-tasks check
