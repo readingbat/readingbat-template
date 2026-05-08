@@ -1,11 +1,13 @@
 [versions]
+gradle = "9.5.0"
+jvm = "17"
 kotest = "6.1.11"
 kotlin = "2.3.21"
 ktor = "3.4.3"
 logging = "8.0.02"
+ben-manes-versions = "0.54.0"
 readingbat = "3.1.5"
 utils = "2.8.2"
-versions = "0.54.0"
 
 [libraries]
 core-utils = { module = "com.pambrose.common-utils:core-utils", version.ref = "utils" }
@@ -29,6 +31,6 @@ testing = [
 ]
 
 [plugins]
+ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "ben-manes-versions" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 ktor-plugin = { id = "io.ktor.plugin", version.ref = "ktor" }
-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

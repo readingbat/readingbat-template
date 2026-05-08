@@ -13,7 +13,7 @@ ReadingBat Template — a Kotlin/Ktor-based template for teachers to author Read
 - **Run all tests:** `./gradlew --rerun-tasks check` or `make tests`
 - **Run a single test class:** `./gradlew test --tests "ContentTests"`
 - **Run a single test:** `./gradlew test --tests "ContentTests.Test all challenges"`
-- **Build fat JAR:** `./gradlew uberjar` (outputs `build/libs/server.jar`)
+- **Build fat JAR:** `./gradlew buildFatJar` or `make uberjar` (outputs `build/libs/server.jar`)
 - **Check dependency updates:** `./gradlew dependencyUpdates` (default Make target)
 - **Continuous compile:** `make cc` (rebuilds on file changes, skips tests)
 
@@ -52,11 +52,13 @@ Managed in `gradle/libs.versions.toml`:
 - `readingbat-core` / `readingbat-kotest` — core DSL, server, and test framework (Maven Central)
 - Ktor — web server framework
 - Kotest — test framework (JUnit5 runner)
-- JVM toolchain: Java 17
+- `jvm` and `gradle` versions are also tracked in the catalog. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; the `Makefile` reads `gradle` from the catalog for `upgrade-wrapper`.
 
 Test dependencies are exposed as a `[bundles] testing` entry and consumed in `build.gradle.kts` via `libs.bundles.testing`.
 
 `group` and `version` live in `gradle.properties` (not `build.gradle.kts`). Repository configuration lives in `settings.gradle.kts` with `FAIL_ON_PROJECT_REPOS` enforcement — do not add per-project repositories to `build.gradle.kts`.
+
+Fat-jar output (`build/libs/server.jar`) is configured via the `ktor { fatJar { archiveFileName = ... } }` block; `tasks.shadowJar` only carries signature/license excludes. Build it with `./gradlew buildFatJar` (or `make uberjar`).
 
 ## DSL Conventions
 

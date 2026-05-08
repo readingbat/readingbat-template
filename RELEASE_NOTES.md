@@ -1,5 +1,29 @@
 # Release Notes
 
+## Unreleased
+
+Build-housekeeping follow-ups to 1.7.0. No DSL or runtime behavior changes.
+
+### Highlights
+
+- **Fixed broken fat-jar make target.** `make uberjar` (and the previously documented `./gradlew uberjar`) referenced a task that does not exist. The Makefile now invokes `./gradlew buildFatJar`; `CLAUDE.md` and `llms.txt` updated to match.
+- **Single fat-jar configuration path.** Switched to Ktor's idiomatic `ktor { fatJar { archiveFileName = "server.jar" } }` block; `tasks.shadowJar` now only carries the META-INF signature/license excludes. Reverses the 1.7.0 direction (consolidation onto `tasks.shadowJar`) in favor of the Ktor-recommended API.
+- **JVM and Gradle versions now in the catalog.** `gradle = "9.5.0"` and `jvm = "17"` are tracked under `[versions]` in `gradle/libs.versions.toml`. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; `Makefile` reads `gradle` from the catalog when running `upgrade-wrapper`.
+- **Catalog plugin alias renamed.** `versions` → `ben-manes-versions` to avoid the name collision with the `[versions]` table. Call site is `alias(libs.plugins.ben.manes.versions)`.
+
+### Upgrade Notes
+
+- Forks invoking `./gradlew uberjar` should switch to `./gradlew buildFatJar` (or use `make uberjar`).
+- Forks referencing `libs.plugins.versions` should rename to `libs.plugins.ben.manes.versions`.
+
+### Verification
+
+- `./gradlew buildFatJar` — produces `build/libs/server.jar` (~184 MB).
+- `./gradlew tasks` and `./gradlew help` resolve cleanly.
+- `make -n upgrade-wrapper` expands to `./gradlew wrapper --gradle-version=9.5.0 --distribution-type=bin`.
+
+---
+
 ## v1.7.0 — 2026-05-03
 
 A build-housekeeping release. No DSL or runtime behavior changes — existing `Content.kt` definitions compile and run unchanged.
@@ -36,7 +60,7 @@ A build-housekeeping release. No DSL or runtime behavior changes — existing `C
 ### Verification
 
 - `./gradlew --rerun-tasks check` — all challenge tests pass.
-- `./gradlew uberjar` — produces a runnable `build/libs/server.jar`.
+- `./gradlew buildFatJar` — produces a runnable `build/libs/server.jar`.
 - `./gradlew properties` — confirms `group=com.readingbat` and `version=1.7.0`.
 
 ---
