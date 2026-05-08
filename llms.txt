@@ -11,7 +11,7 @@ ReadingBat Template provides a starting point for educators to create their own 
 - Build: ./gradlew build -xtest
 - Run server: ./gradlew run
 - Run tests: ./gradlew --rerun-tasks check
-- Build fat JAR: ./gradlew uberjar
+- Build fat JAR: ./gradlew buildFatJar (outputs build/libs/server.jar)
 
 ## Key Files
 
@@ -21,7 +21,7 @@ ReadingBat Template provides a starting point for educators to create their own 
 - build.gradle.kts: Gradle build script (group/version live in gradle.properties)
 - gradle.properties: Project group and version
 - settings.gradle.kts: Repository configuration with FAIL_ON_PROJECT_REPOS enforcement
-- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group
+- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm and gradle versions consumed by build.gradle.kts and Makefile
 - CHANGELOG.md / RELEASE_NOTES.md: Release history and per-version notes
 - python/: Python challenge source files
 - src/main/java/: Java challenge source files
@@ -50,9 +50,9 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 
 ## Tech Stack
 
-- Language: Kotlin (JVM 17)
+- Language: Kotlin (JVM 17, version sourced from libs.versions.toml)
 - Web framework: Ktor
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
 - Build: Gradle 9.5.0 with version catalog (libs.versions.toml) and properties-driven version
-- Deployment: Heroku-compatible (system.properties, fat JAR via shadow plugin)
+- Deployment: Heroku-compatible (system.properties, fat JAR via Ktor plugin's buildFatJar task)
 - Current version: 1.7.0

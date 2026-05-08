@@ -1,9 +1,10 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
   application
   alias(libs.plugins.kotlin.jvm)
-  alias(libs.plugins.versions)
+  alias(libs.plugins.ben.manes.versions)
   alias(libs.plugins.ktor.plugin)
 }
 
@@ -23,25 +24,30 @@ dependencies {
 }
 
 kotlin {
-  jvmToolchain(17)
+  jvmToolchain(libs.versions.jvm.get().toInt())
 }
+
+val cleanTask = tasks.named("clean")
+val buildTask = tasks.named("build")
 
 tasks.register("stage") {
-  dependsOn("clean", "build")
+  dependsOn(cleanTask, buildTask)
 }
 
-tasks.named("build") {
-  mustRunAfter("clean")
+buildTask {
+  mustRunAfter(cleanTask)
+}
+
+ktor {
+  fatJar {
+    archiveFileName = "server.jar"
+  }
 }
 
 tasks.shadowJar {
-  archiveFileName.set("server.jar")
   isZip64 = true
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-  exclude("META-INF/*.SF")
-  exclude("META-INF/*.DSA")
-  exclude("META-INF/*.RSA")
-  exclude("LICENSE*")
+  exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "LICENSE*")
 }
 
 tasks.test {
@@ -49,7 +55,7 @@ tasks.test {
 
   testLogging {
     events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
-    exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    exceptionFormat = TestExceptionFormat.FULL
     showStandardStreams = false
   }
 }

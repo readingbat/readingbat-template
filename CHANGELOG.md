@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `make uberjar` (and the documented `./gradlew uberjar` command) was broken — no such task exists. Pointed `make uberjar` at `./gradlew buildFatJar` and updated `CLAUDE.md` / `llms.txt` accordingly.
+
+### Changed
+
+- Switched fat-jar configuration to Ktor's idiomatic `ktor { fatJar { archiveFileName = "server.jar" } }` block. `tasks.shadowJar` now only carries signature/license excludes (`META-INF/*.SF`, `*.DSA`, `*.RSA`, `LICENSE*`), collapsed into a single varargs `exclude(...)` call. This reverses the 1.7.0 consolidation toward `tasks.shadowJar` and removes parallel configuration paths.
+- Promoted `jvm` (17) and `gradle` (9.5.0) versions into `gradle/libs.versions.toml`. `build.gradle.kts` reads the JVM toolchain via `libs.versions.jvm.get().toInt()`; the `Makefile`'s `upgrade-wrapper` target reads the Gradle version from the catalog via `sed`.
+- Renamed the version-catalog plugin alias `versions` → `ben-manes-versions` (the prior name collided with the `[versions]` table). Call site is now `alias(libs.plugins.ben.manes.versions)`.
+- Extracted repeated `"clean"` / `"build"` task-name strings to `cleanTask` / `buildTask` references in `build.gradle.kts`.
+
 ## [1.7.0] - 2026-05-03
 
 ### Changed

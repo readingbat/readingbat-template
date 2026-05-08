@@ -1,5 +1,7 @@
 .PHONY: default clean build tests uberjar uber cc run heroku logs versioncheck upgrade-wrapper
 
+GRADLE_VERSION := $(shell sed -n 's/^gradle = "\(.*\)"/\1/p' gradle/libs.versions.toml)
+
 default: versioncheck
 
 clean:
@@ -12,7 +14,7 @@ tests:
 	./gradlew --rerun-tasks check
 
 uberjar:
-	./gradlew uberjar
+	./gradlew buildFatJar
 
 uber: uberjar
 	java -jar build/libs/server.jar
@@ -33,4 +35,4 @@ versioncheck:
 	./gradlew dependencyUpdates
 
 upgrade-wrapper:
-	./gradlew wrapper --gradle-version=9.5.0 --distribution-type=bin
+	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
