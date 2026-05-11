@@ -14,8 +14,13 @@ ReadingBat Template — a Kotlin/Ktor-based template for teachers to author Read
 - **Run a single test class:** `./gradlew test --tests "ContentTests"`
 - **Run a single test:** `./gradlew test --tests "ContentTests.Test all challenges"`
 - **Build fat JAR:** `./gradlew buildFatJar` or `make uberjar` (outputs `build/libs/server.jar`)
+- **Lint (kotlinter + detekt):** `make lint`
+- **Auto-format (ktlint):** `make format`
+- **Run detekt only:** `make detekt`
+- **Regenerate detekt baseline:** `make detekt-baseline`
 - **Check dependency updates:** `./gradlew dependencyUpdates` (default Make target)
 - **Continuous compile:** `make cc` (rebuilds on file changes, skips tests)
+- **Discover Makefile targets:** `make help` (renders self-documented `## …` descriptions)
 
 ## Architecture
 
@@ -34,7 +39,7 @@ The `repo` property switches between `GitHubRepo` (production) and `FileSystemSo
 Challenge code lives outside the Kotlin source tree in language-specific directories:
 - **Python:** `python/<packageName>/` (e.g., `python/group1/find_it.py`)
 - **Java:** `src/main/java/<packageName>/` (e.g., `src/main/java/group1/JoinEnds.java`)
-- **Kotlin:** `src/main/kotlin/<packageName>/` (e.g., `src/main/kotlin/kgroup1/StringLambda1.kt`)
+- **Kotlin:** `src/main/kotlin/<packageName>/` (e.g., `src/main/kotlin/kgroup/StringLambda1.kt`)
 
 ### Server
 
@@ -58,7 +63,13 @@ Test dependencies are exposed as a `[bundles] testing` entry and consumed in `bu
 
 `group` and `version` live in `gradle.properties` (not `build.gradle.kts`). Repository configuration lives in `settings.gradle.kts` with `FAIL_ON_PROJECT_REPOS` enforcement — do not add per-project repositories to `build.gradle.kts`.
 
-Fat-jar output (`build/libs/server.jar`) is configured via the `ktor { fatJar { archiveFileName = ... } }` block; `tasks.shadowJar` only carries signature/license excludes. Build it with `./gradlew buildFatJar` (or `make uberjar`).
+Fat-jar output (`build/libs/server.jar`) is configured via the `ktor { fatJar { archiveFileName = ... } }` block; `tasks.shadowJar` only carries signature excludes (`META-INF/*.SF`, `*.DSA`, `*.RSA`) and uses `DuplicatesStrategy.WARN` so duplicate-resource collisions surface in build output. Build it with `./gradlew buildFatJar` (or `make uberjar`).
+
+## Code Style & Linting
+
+- `.editorconfig` defines project-wide formatting (UTF-8, LF, 2-space indent, 120-char max, final newline) and disables a curated set of ktlint rules that conflict with this codebase's style.
+- Kotlinter (ktlint) and detekt are wired in via Gradle plugins (`org.jmailen.kotlinter` and `dev.detekt`). Run them together with `make lint`; auto-fix ktlint with `make format`.
+- Gradle's configuration cache is enabled (`org.gradle.configuration-cache=true` in `gradle.properties`) — keep new build logic configuration-cache-compatible.
 
 ## DSL Conventions
 

@@ -40,11 +40,16 @@ See the wiki for more details:
 | `./gradlew run` | Start the dev server (port 8080) |
 | `./gradlew --rerun-tasks check` | Run all tests |
 | `./gradlew test --tests "ContentTests"` | Run a single test class |
-| `./gradlew uberjar` | Build a fat JAR (`build/libs/server.jar`) |
+| `./gradlew buildFatJar` | Build a fat JAR (`build/libs/server.jar`) |
 | `./gradlew build --continuous -xtest` | Continuous compile on file changes |
+| `./gradlew lintKotlin detekt` | Run Kotlinter (ktlint) and detekt |
+| `./gradlew formatKotlin` | Auto-format Kotlin sources with ktlint |
 | `./gradlew dependencyUpdates` | Check for dependency updates |
 
-A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, etc.).
+A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, `make lint`, `make format`, etc.). Run `make help` to see every documented target.
+
+> Project formatting is governed by [`.editorconfig`](./.editorconfig) (UTF-8, LF, 2-space indent, 120-char max).
+> Lint via Kotlinter (ktlint) + detekt; both are wired in as Gradle plugins.
 
 > Project metadata (`group`, `version`) is set in [`gradle.properties`](./gradle.properties).
 > Dependency versions and the `testing` bundle are defined in [`gradle/libs.versions.toml`](./gradle/libs.versions.toml).
@@ -60,8 +65,8 @@ Specify the content in the [src/main/kotlin/Content.kt](./src/main/kotlin/Conten
 
 The structure of the DSL is:
 ```kotlin
-val content = 
-  readingBatContent { 
+val content =
+  readingBatContent {
     python {                                    // Creates a LanguageGroup object
       group("Group 1") {                        // Creates a ChallengeGroup named "Group 1"
         packageName = "group1"                  // The path of the challenges in this group
@@ -74,9 +79,9 @@ val content =
         challenge("boolean2") {                 // Creates a Challenge for group1/boolean2.py
           returnType = BooleanType              // Challenge return type
         }
-        
+
         // Include all challenges matching the "slice*.py" filename pattern
-        includeFilesWithType = "slice*.py" returns StringType  
+        includeFilesWithType = "slice*.py" returns StringType
       }
     }
 
@@ -98,7 +103,7 @@ val content =
 
     kotlin {
       group("Group 1") {
-        packageName = "kgroup1"
+        packageName = "kgroup"
         description = "Description of **Kotlin** Group 1"
 
         challenge("StringLambda1") {
@@ -127,7 +132,7 @@ Challenge source files live in language-specific directories:
 |----------|-----------|---------|
 | Python | `python/<packageName>/` | `python/group1/find_it.py` |
 | Java | `src/main/java/<packageName>/` | `src/main/java/group1/JoinEnds.java` |
-| Kotlin | `src/main/kotlin/<packageName>/` | `src/main/kotlin/kgroup1/StringLambda1.kt` |
+| Kotlin | `src/main/kotlin/<packageName>/` | `src/main/kotlin/kgroup/StringLambda1.kt` |
 
 Wiki references:
 [Python](https://github.com/readingbat/readingbat-template/wiki/Python-Challenges)
