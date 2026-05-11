@@ -50,7 +50,11 @@ logs: ## Tail Heroku logs
 versioncheck: ## Check for dependency updates
 	./gradlew dependencyUpdates
 
+# Gradle's documented upgrade procedure: the first run rewrites
+# gradle-wrapper.properties using the *old* wrapper jar; the second run
+# regenerates the wrapper itself with the new version.
 upgrade-wrapper: _require-gradle-version ## Upgrade the Gradle wrapper to the version in libs.versions.toml
+	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
 	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
 
 _require-gradle-version:
