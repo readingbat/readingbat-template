@@ -5,15 +5,20 @@ plugins {
   application
   alias(libs.plugins.kotlin.jvm)
   alias(libs.plugins.ben.manes.versions)
+  alias(libs.plugins.detekt)
+  alias(libs.plugins.kotlinter)
   alias(libs.plugins.ktor.plugin)
 }
 
-// This is for ./gradlew run
+description = "ReadingBat Site"
+
+detekt {
+  buildUponDefaultConfig = true
+}
+
 application {
   mainClass = "ContentServerKt"
 }
-
-description = "ReadingBat Site"
 
 dependencies {
   implementation(libs.readingbat.core)
@@ -44,10 +49,11 @@ ktor {
   }
 }
 
+// Ktor's `buildFatJar` task delegates to shadow; this block configures that output.
 tasks.shadowJar {
   isZip64 = true
-  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-  exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "LICENSE*")
+  duplicatesStrategy = DuplicatesStrategy.WARN
+  exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
 }
 
 tasks.test {

@@ -6,7 +6,9 @@ kotlin = "2.3.21"
 ktor = "3.4.3"
 logging = "8.0.02"
 ben-manes-versions = "0.54.0"
-readingbat = "3.1.5"
+detekt = "2.0.0-alpha.3"
+kotlinter = "5.4.2"
+readingbat = "3.1.8"
 utils = "2.8.2"
 
 [libraries]
@@ -32,5 +34,7 @@ testing = [
 
 [plugins]
 ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "ben-manes-versions" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 ktor-plugin = { id = "io.ktor.plugin", version.ref = "ktor" }
