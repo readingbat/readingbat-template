@@ -12,20 +12,25 @@ ReadingBat Template provides a starting point for educators to create their own 
 - Run server: ./gradlew run
 - Run tests: ./gradlew --rerun-tasks check
 - Build fat JAR: ./gradlew buildFatJar (outputs build/libs/server.jar)
+- Lint: ./gradlew lintKotlin detekt (or `make lint`)
+- Format: ./gradlew formatKotlin (or `make format`)
+- Discover Makefile targets: make help
 
 ## Key Files
 
 - src/main/kotlin/Content.kt: Central content definition using the readingBatContent DSL
 - src/main/kotlin/ContentServer.kt: Server entry point (delegates to ReadingBatServer)
 - src/test/kotlin/ContentTests.kt: Kotest-based tests that verify all challenges
-- build.gradle.kts: Gradle build script (group/version live in gradle.properties)
-- gradle.properties: Project group and version
+- build.gradle.kts: Gradle build script (group/version live in gradle.properties); applies detekt and kotlinter plugins
+- gradle.properties: Project group and version; configuration cache enabled
 - settings.gradle.kts: Repository configuration with FAIL_ON_PROJECT_REPOS enforcement
-- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm and gradle versions consumed by build.gradle.kts and Makefile
+- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm, gradle, detekt, and kotlinter versions consumed by build.gradle.kts and Makefile
+- .editorconfig: Project-wide formatting (UTF-8, LF, 2-space indent, 120-char max) and ktlint rule overrides
+- Makefile: Shorthand targets (build/run/tests/lint/format/detekt/uberjar/etc.) with self-documenting `make help`
 - CHANGELOG.md / RELEASE_NOTES.md: Release history and per-version notes
 - python/: Python challenge source files
 - src/main/java/: Java challenge source files
-- src/main/kotlin/kgroup1/: Kotlin challenge source files
+- src/main/kotlin/kgroup/: Kotlin challenge source files
 
 ## Content DSL Structure
 
@@ -53,6 +58,8 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 - Language: Kotlin (JVM 17, version sourced from libs.versions.toml)
 - Web framework: Ktor
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
-- Build: Gradle 9.5.0 with version catalog (libs.versions.toml) and properties-driven version
+- Build: Gradle 9.5.0 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
+- Static analysis: detekt (`dev.detekt`) and Kotlinter / ktlint (`org.jmailen.kotlinter`)
 - Deployment: Heroku-compatible (system.properties, fat JAR via Ktor plugin's buildFatJar task)
-- Current version: 1.7.0
+- readingbat-core: 3.1.8
+- Current version: 1.7.1

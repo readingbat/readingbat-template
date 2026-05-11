@@ -23,7 +23,6 @@ val content =
         challenge("find_it") {
           returnType = BooleanType
         }
-
       }
 
       group("Group 2") {
@@ -41,8 +40,10 @@ val content =
         packageName = "group1"
         description = "Description of **Java** Group 1"
 
-        challenge("JoinEnds") {                 // Java Return types are inferred from the code
-          codingBatEquiv = "p141494"            // Will add a link to this codingbat.com challenge
+        // Java Return types are inferred from the code
+        challenge("JoinEnds") {
+          // Add a link to this codingbat.com challenge
+          codingBatEquiv = "p141494"
         }
 
         // Include all challenges matching the "Has*.java" filename pattern
@@ -53,7 +54,7 @@ val content =
     kotlin {
 
       group("Group 1") {
-        packageName = "kgroup1"
+        packageName = "kgroup"
         description = "Description of **Kotlin** Group 1"
 
         challenge("StringLambda1") {

@@ -32,15 +32,24 @@ kotlin {
   jvmToolchain(libs.versions.jvm.get().toInt())
 }
 
-val cleanTask = tasks.named("clean")
-val buildTask = tasks.named("build")
-
-tasks.register("stage") {
-  dependsOn(cleanTask, buildTask)
+detekt {
+  source.setFrom("src/main/kotlin", "src/test/kotlin")
+  buildUponDefaultConfig = true
+  parallel = true
 }
 
-buildTask {
-  mustRunAfter(cleanTask)
+kotlinter {
+  ignoreFormatFailures = false
+  ignoreLintFailures = false
+  reporters = arrayOf("checkstyle", "plain")
+}
+
+tasks.register("stage") {
+  dependsOn("clean", "build")
+}
+
+(tasks.named("build")) {
+  mustRunAfter("clean")
 }
 
 ktor {
@@ -60,7 +69,7 @@ tasks.test {
   useJUnitPlatform()
 
   testLogging {
-    events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+    events = setOf(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED, TestLogEvent.STANDARD_ERROR)
     exceptionFormat = TestExceptionFormat.FULL
     showStandardStreams = false
   }

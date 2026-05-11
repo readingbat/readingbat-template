@@ -1,4 +1,4 @@
-package kgroup1
+package kgroup
 
 // @desc Description of **double()**
 
