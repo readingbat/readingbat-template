@@ -59,7 +59,7 @@ Managed in `gradle/libs.versions.toml`:
 - `readingbat-core` / `readingbat-kotest` — core DSL, server, and test framework (Maven Central)
 - Ktor — web server framework
 - Kotest — test framework (JUnit5 runner)
-- `jvm` and `gradle` versions are also tracked in the catalog. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; the `Makefile` reads `gradle-wrapper` from the catalog for `upgrade-wrapper`.
+- `jvm` and `gradle-wrapper` versions are also tracked in the catalog. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; the `Makefile` reads `gradle-wrapper` from the catalog for `upgrade-wrapper`.
 
 Test dependencies are exposed as a `[bundles] testing` entry and consumed in `build.gradle.kts` via `libs.bundles.testing`.
 

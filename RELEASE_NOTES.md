@@ -1,37 +1,38 @@
 # Release Notes
 
-## v1.8.0 — 2026-06-15
+## v1.8.0 — 2026-07-03
 
-A linting and toolchain-modernization release on top of 1.7.0. The content DSL is unchanged, but the project now targets **JDK 25** and picks up **readingbat-core 3.2.0**, which adjusts one test call site.
+A linting and toolchain-modernization release on top of 1.7.0. The content DSL is unchanged, but the project now targets **JDK 25** and picks up **readingbat-core 3.2.1**, which adjusts one test call site.
 
 ### Highlights
 
-- **JVM toolchain 17 → 25.** `gradle/libs.versions.toml` sets `jvm = "25"` (read by `build.gradle.kts` for the toolchain) and `system.properties` sets `java.runtime.version=25` for Heroku. **A JDK 25 is now required to build.**
-- **readingbat-core 3.1.5 → 3.2.0.** `correctAnswers` is now a suspend function; `ContentTests` calls `correctAnswers()` inside a `runBlocking { … }` block. Existing `Content.kt` definitions compile and run unchanged.
-- **Linting wired in.** Detekt (`dev.detekt` 2.0.0-alpha.4) and Kotlinter (`org.jmailen.kotlinter` 5.5.0) Gradle plugins are now applied, with matching `make lint` / `make format` / `make detekt` / `make detekt-baseline` shortcuts.
+- **JVM toolchain 17 → 25.** `gradle/libs.versions.toml` sets `jvm = "25"` (read by `build.gradle.kts` for the toolchain). **A JDK 25 is now required to build.**
+- **readingbat-core 3.1.5 → 3.2.1.** `correctAnswers` is now a suspend function; `ContentTests` calls `correctAnswers()` inside a `runBlocking { … }` block. Existing `Content.kt` definitions compile and run unchanged.
+- **Linting wired in.** Detekt (`dev.detekt` 2.0.0-alpha.5) and Kotlinter (`org.jmailen.kotlinter` 5.5.0) Gradle plugins are now applied, with matching `make lint` / `make format` / `make detekt` / `make detekt-baseline` shortcuts.
 - **`.editorconfig` landed.** Project-wide formatting rules (UTF-8, LF, 2-space indent, 120-char max, final newline) plus a curated set of disabled ktlint rules tuned to this codebase.
 - **Gradle configuration cache enabled.** `org.gradle.configuration-cache=true` in `gradle.properties`. New build logic should be configuration-cache-compatible.
 - **Self-documenting Makefile.** `##` annotations on each target are surfaced via `make help`; a `_require-gradle-version` guard prevents silent wrapper-upgrade failures, and `upgrade-wrapper` runs the wrapper twice so the wrapper script regenerates.
 - **ShadowJar duplicates surface.** `tasks.shadowJar` now uses `DuplicatesStrategy.WARN` (dropping the `LICENSE*` exclude) so duplicate-resource collisions in the fat jar are visible.
 - **Fixed broken fat-jar make target.** `make uberjar` (and the previously documented `./gradlew uberjar`) referenced a task that does not exist. The Makefile now invokes `./gradlew buildFatJar`; `CLAUDE.md` and `llms.txt` updated to match.
 - **Single fat-jar configuration path.** Switched to Ktor's idiomatic `ktor { fatJar { archiveFileName = "server.jar" } }` block; `tasks.shadowJar` now only carries the META-INF signature excludes. Reverses the 1.7.0 direction (consolidation onto `tasks.shadowJar`) in favor of the Ktor-recommended API.
-- **JVM and Gradle versions now in the catalog.** `gradle-wrapper = "9.5.1"` and `jvm = "25"` are tracked under `[versions]` in `gradle/libs.versions.toml`. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; `Makefile` reads `gradle-wrapper` from the catalog when running `upgrade-wrapper`.
+- **JVM and Gradle versions now in the catalog.** `gradle-wrapper = "9.6.1"` and `jvm = "25"` are tracked under `[versions]` in `gradle/libs.versions.toml`. `build.gradle.kts` reads `libs.versions.jvm.get().toInt()` for the toolchain; `Makefile` reads `gradle-wrapper` from the catalog when running `upgrade-wrapper`.
 - **Catalog plugin alias renamed.** `versions` → `ben-manes-versions` to avoid the name collision with the `[versions]` table. Call site is `alias(libs.plugins.ben.manes.versions)`.
 - **Kotlin challenge package renamed.** `kgroup1` → `kgroup` to match the documented layout.
+- **Dropped Heroku deployment support.** Removed `Procfile`, `system.properties`, and the `heroku` / `logs` Makefile targets; deploy the `./gradlew buildFatJar` output (`build/libs/server.jar`) instead.
 
 ### Dependencies
 
 | Library          | Version       |
 |------------------|---------------|
 | Kotlin           | 2.4.0         |
-| Ktor             | 3.5.0         |
-| Kotest           | 6.2.0         |
-| readingbat-core  | 3.2.0         |
-| core-utils       | 2.9.2         |
+| Ktor             | 3.5.1         |
+| Kotest           | 6.2.1         |
+| readingbat-core  | 3.2.1         |
+| core-utils       | 2.9.3         |
 | kotlin-logging   | 8.0.4         |
-| detekt           | 2.0.0-alpha.4 |
+| detekt           | 2.0.0-alpha.5 |
 | kotlinter        | 5.5.0         |
-| Gradle           | 9.5.1         |
+| Gradle           | 9.6.1         |
 | JDK toolchain    | 25            |
 
 ### Upgrade Notes
@@ -47,7 +48,7 @@ A linting and toolchain-modernization release on top of 1.7.0. The content DSL i
 - `./gradlew --rerun-tasks check` — all challenge tests pass.
 - `./gradlew buildFatJar` — produces `build/libs/server.jar`.
 - `./gradlew lintKotlin detekt` — both checks run cleanly on `master`.
-- `make -n upgrade-wrapper` expands to `./gradlew wrapper --gradle-version=9.5.1 --distribution-type=bin` (run twice).
+- `make -n upgrade-wrapper` expands to `./gradlew wrapper --gradle-version=9.6.1 --distribution-type=bin` (run twice).
 - `make help` lists every documented Makefile target.
 
 **Full Changelog:** https://github.com/readingbat/readingbat-template/compare/1.7.0...1.8.0

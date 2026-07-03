@@ -24,7 +24,7 @@ ReadingBat Template provides a starting point for educators to create their own 
 - build.gradle.kts: Gradle build script (group/version live in gradle.properties); applies detekt and kotlinter plugins
 - gradle.properties: Project group and version; configuration cache enabled
 - settings.gradle.kts: Repository configuration with FAIL_ON_PROJECT_REPOS enforcement
-- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm, gradle, detekt, and kotlinter versions consumed by build.gradle.kts and Makefile
+- gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm, gradle-wrapper, detekt, and kotlinter versions consumed by build.gradle.kts and Makefile
 - .editorconfig: Project-wide formatting (UTF-8, LF, 2-space indent, 120-char max) and ktlint rule overrides
 - Makefile: Shorthand targets (build/run/tests/lint/format/detekt/uberjar/etc.) with self-documenting `make help`
 - CHANGELOG.md / RELEASE_NOTES.md: Release history and per-version notes
@@ -58,8 +58,8 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 - Language: Kotlin (JVM 25, version sourced from libs.versions.toml)
 - Web framework: Ktor
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
-- Build: Gradle 9.5.1 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
+- Build: Gradle 9.6.1 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
 - Static analysis: detekt (`dev.detekt`) and Kotlinter / ktlint (`org.jmailen.kotlinter`)
-- Deployment: Heroku-compatible (system.properties, fat JAR via Ktor plugin's buildFatJar task)
-- readingbat-core: 3.2.0
+- Deployment: Runnable fat JAR via the Ktor plugin's buildFatJar task (build/libs/server.jar)
+- readingbat-core: 3.2.1
 - Current version: 1.8.0
