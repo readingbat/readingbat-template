@@ -51,6 +51,8 @@ Challenge code lives outside the Kotlin source tree in language-specific directo
 
 **Important:** Tests must call `initTestProperties()` before accessing `content` (e.g., via `beforeEach`). This sets `IS_PRODUCTION=false` and `IS_TESTING=true` in the `KtorProperty` config store — without it, `isProduction()` in `Content.kt` will throw `Property IS_PRODUCTION not initialized`.
 
+As of readingbat-core 3.2.0, `correctAnswers` is a suspend function — call it as `correctAnswers()` and wrap answer assertions in `runBlocking { … }` (see `ContentTests.kt`).
+
 ## Key Dependencies
 
 Managed in `gradle/libs.versions.toml`:

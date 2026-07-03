@@ -55,11 +55,11 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 
 ## Tech Stack
 
-- Language: Kotlin (JVM 17, version sourced from libs.versions.toml)
+- Language: Kotlin (JVM 25, version sourced from libs.versions.toml)
 - Web framework: Ktor
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
-- Build: Gradle 9.5.0 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
+- Build: Gradle 9.5.1 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
 - Static analysis: detekt (`dev.detekt`) and Kotlinter / ktlint (`org.jmailen.kotlinter`)
 - Deployment: Heroku-compatible (system.properties, fat JAR via Ktor plugin's buildFatJar task)
-- readingbat-core: 3.1.8
-- Current version: 1.7.1
+- readingbat-core: 3.2.0
+- Current version: 1.8.0

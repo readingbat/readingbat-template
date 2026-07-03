@@ -13,7 +13,7 @@ send us a note and we'll link [ReadingBat.com](https://www.readingbat.com) to it
 
 ## Prerequisites
 
-- **Java 17+** (the project uses a JVM 17 toolchain)
+- **Java 25+** (the project uses a JVM 25 toolchain)
 - **Git** (to clone the repo and manage content)
 
 > Gradle is included via the [Gradle Wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html) — no separate install needed.

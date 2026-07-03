@@ -1,4 +1,4 @@
-.PHONY: default help clean build tests uberjar uber cc run heroku logs lint detekt \
+.PHONY: default help clean build tests uberjar uber cc run lint detekt \
 		detekt-baseline format versions upgrade-wrapper _require-gradle-version
 
 GRADLE_VERSION := $(shell sed -n 's/^gradle-wrapper = "\(.*\)"/\1/p' gradle/libs.versions.toml)
@@ -42,19 +42,13 @@ cc: ## Continuous compile (rebuilds on file changes, skips tests)
 run: ## Run the server
 	./gradlew run
 
-heroku: ## Deploy to Heroku (git push heroku master)
-	git push heroku master
-
-logs: ## Tail Heroku logs
-	heroku logs --tail
-
 versions: ## Check for dependency updates
 	./gradlew dependencyUpdates --no-configuration-cache --no-parallel
 
-# Gradle's documented upgrade procedure: the first run rewrites
-# gradle-wrapper.properties using the *old* wrapper jar; the second run
-# regenerates the wrapper itself with the new version.
-upgrade-wrapper: _require-gradle-version ## Upgrade the Gradle wrapper to the version in libs.versions.toml
+upgrade-wrapper: _require-gradle-version ## Upgrade the Gradle wrapper to the catalog version
+	# Gradle's documented upgrade procedure: the first run rewrites
+	# gradle-wrapper.properties using the *old* wrapper jar; the second run
+	# regenerates the wrapper itself with the new version.
 	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
 	./gradlew wrapper --gradle-version=$(GRADLE_VERSION) --distribution-type=bin
 

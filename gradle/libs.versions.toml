@@ -1,15 +1,15 @@
 [versions]
-gradle-wrapper = "9.5.1"
-jvm = "17"
-kotest = "6.1.11"
-kotlin = "2.4.0"
-ktor = "3.5.0"
-logging = "8.0.4"
 ben-manes-versions = "0.54.0"
-detekt = "2.0.0-alpha.3"
+detekt = "2.0.0-alpha.5"
+gradle-wrapper = "9.6.1"
+jvm = "25"
+kotest = "6.2.1"
+kotlin = "2.4.0"
 kotlinter = "5.5.0"
-readingbat = "3.1.8"
-utils = "2.9.0"
+ktor = "3.5.1"
+logging = "8.0.4"
+readingbat = "3.2.1"
+utils = "2.9.3"
 
 [libraries]
 core-utils = { module = "com.pambrose.common-utils:core-utils", version.ref = "utils" }
