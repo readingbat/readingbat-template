@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-07-26
+
+### Added
+
+- GitHub Actions CI workflow (`.github/workflows/ci.yml`). Runs on pushes and pull requests targeting `master`: checks out the repo, sets up Temurin JDK 25 and Gradle, runs `./gradlew --rerun-tasks check`, then `./gradlew lintKotlin detekt`.
+
+### Changed
+
+- Bumped dependencies: `readingbat-core` / `readingbat-kotest` 3.2.1 → 3.3.0, Kotlin 2.4.0 → 2.4.10, Kotest 6.2.1 → 6.2.3, `core-utils` 2.9.3 → 3.2.1, and Kotlinter 5.5.0 → 5.6.0.
+- Renamed the `[versions]` catalog key `ben-manes-versions` → `versions`. The plugin alias stays `ben-manes-versions`, so the `alias(libs.plugins.ben.manes.versions)` call site in `build.gradle.kts` is unchanged.
+
 ## [1.8.0] - 2026-07-03
 
 ### Added
@@ -87,6 +98,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrades to Kotlin 2.1.0 / Ktor 3.0.1, `readingbat-core` 2.0.0, and various jar refreshes.
 
+[1.9.0]: https://github.com/readingbat/readingbat-template/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/readingbat/readingbat-template/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/readingbat/readingbat-template/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/readingbat/readingbat-template/releases/tag/1.6.0

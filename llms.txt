@@ -27,6 +27,7 @@ ReadingBat Template provides a starting point for educators to create their own 
 - gradle/libs.versions.toml: Dependency version catalog with [bundles] testing group; also tracks jvm, gradle-wrapper, detekt, and kotlinter versions consumed by build.gradle.kts and Makefile
 - .editorconfig: Project-wide formatting (UTF-8, LF, 2-space indent, 120-char max) and ktlint rule overrides
 - Makefile: Shorthand targets (build/run/tests/lint/format/detekt/uberjar/etc.) with self-documenting `make help`
+- .github/workflows/ci.yml: GitHub Actions CI — builds and tests on Temurin JDK 25, then runs lintKotlin and detekt
 - CHANGELOG.md / RELEASE_NOTES.md: Release history and per-version notes
 - python/: Python challenge source files
 - src/main/java/: Java challenge source files
@@ -60,6 +61,7 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 - Test framework: Kotest (StringSpec style, JUnit5 runner)
 - Build: Gradle 9.6.1 with version catalog (libs.versions.toml), properties-driven version, and configuration cache enabled
 - Static analysis: detekt (`dev.detekt`) and Kotlinter / ktlint (`org.jmailen.kotlinter`)
+- CI: GitHub Actions (.github/workflows/ci.yml) on pushes and PRs to master
 - Deployment: Runnable fat JAR via the Ktor plugin's buildFatJar task (build/libs/server.jar)
-- readingbat-core: 3.2.1
-- Current version: 1.8.0
+- readingbat-core: 3.3.0
+- Current version: 1.9.0
