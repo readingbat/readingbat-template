@@ -73,6 +73,15 @@ Fat-jar output (`build/libs/server.jar`) is configured via the `ktor { fatJar { 
 - Kotlinter (ktlint) and detekt are wired in via Gradle plugins (`org.jmailen.kotlinter` and `dev.detekt`). Run them together with `make lint`; auto-fix ktlint with `make format`.
 - Gradle's configuration cache is enabled (`org.gradle.configuration-cache=true` in `gradle.properties`) — keep new build logic configuration-cache-compatible.
 
+## Continuous Integration
+
+`.github/workflows/ci.yml` runs on pushes and pull requests targeting `master`. It installs Temurin JDK 25, sets up Gradle, then runs two steps:
+
+1. `./gradlew --rerun-tasks check`
+2. `./gradlew lintKotlin detekt`
+
+Both must pass, so run `make tests` and `make lint` locally before pushing — a formatting violation fails CI just as a test failure does.
+
 ## DSL Conventions
 
 - Java challenge return types are inferred from source code; Python and Kotlin challenges require explicit `returnType` (e.g., `BooleanType`, `StringType`, `IntType`)

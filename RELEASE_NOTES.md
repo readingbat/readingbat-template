@@ -1,5 +1,50 @@
 # Release Notes
 
+## v1.9.0 — 2026-07-26
+
+A dependency-refresh and CI release on top of 1.8.0. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**.
+
+### Highlights
+
+- **GitHub Actions CI.** `.github/workflows/ci.yml` runs on pushes and pull requests targeting `master`. It checks out the repo, installs Temurin JDK 25, sets up Gradle via `gradle/actions/setup-gradle@v4`, runs `./gradlew --rerun-tasks check`, then runs `./gradlew lintKotlin detekt`. Lint and static analysis are now enforced on every PR rather than by convention.
+- **readingbat-core / readingbat-kotest 3.2.1 → 3.3.0.** No call-site changes were required; `correctAnswers()` remains a suspend function as of 3.2.0.
+- **core-utils 2.9.3 → 3.2.1.** A major-version bump of a library the template uses directly — `FileSystemSource`, `GitHubRepo`, and `OwnerType.Organization` in `Content.kt`, and `toDoubleQuoted` in `ContentTests.kt`. All four call sites compile unchanged against 3.x.
+- **Kotlin 2.4.0 → 2.4.10, Kotest 6.2.1 → 6.2.3, Kotlinter 5.5.0 → 5.6.0.**
+- **Catalog version key renamed.** `[versions] ben-manes-versions` → `versions`. The plugin alias remains `ben-manes-versions`, so `alias(libs.plugins.ben.manes.versions)` in `build.gradle.kts` is unchanged. This affects only the `version.ref` inside `libs.versions.toml`.
+
+### Dependencies
+
+| Library          | Version       |
+|------------------|---------------|
+| Kotlin           | 2.4.10        |
+| Ktor             | 3.5.1         |
+| Kotest           | 6.2.3         |
+| readingbat-core  | 3.3.0         |
+| core-utils       | 3.2.1         |
+| kotlin-logging   | 8.0.4         |
+| detekt           | 2.0.0-alpha.5 |
+| kotlinter        | 5.6.0         |
+| Gradle           | 9.6.1         |
+| JDK toolchain    | 25            |
+
+### Upgrade Notes
+
+- No source changes are required for forks that track this template — this release touches only `.github/workflows/ci.yml`, `gradle/libs.versions.toml`, and `gradle.properties`.
+- Forks that add their own `[versions] ben-manes-versions` entry should rename the key to `versions` (or leave theirs alone and keep their own `version.ref`).
+- Forks with custom code against `core-utils` 2.x should re-verify against 3.x; the template's own usage needed no changes, but 3.0.0 is a major release.
+- JDK 25 remains required, unchanged from 1.8.0.
+
+### Verification
+
+- `./gradlew --rerun-tasks check` — BUILD SUCCESSFUL; all three `ContentTests` specs pass (`Test all challenges`, `Test with correct answers`, `Test individual challenges`).
+- `./gradlew buildFatJar` — BUILD SUCCESSFUL; produces `build/libs/server.jar`.
+- `./gradlew lintKotlin detekt` — both checks run cleanly on `master`.
+- `build/libs/readingbat-template-1.9.0.jar` confirms the `gradle.properties` version bump took effect.
+
+**Full Changelog:** https://github.com/readingbat/readingbat-template/compare/1.8.0...1.9.0
+
+---
+
 ## v1.8.0 — 2026-07-03
 
 A linting and toolchain-modernization release on top of 1.7.0. The content DSL is unchanged, but the project now targets **JDK 25** and picks up **readingbat-core 3.2.1**, which adjusts one test call site.

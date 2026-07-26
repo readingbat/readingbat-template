@@ -1,4 +1,5 @@
 [![Kotlin](https://img.shields.io/badge/%20language-Kotlin-red.svg)](https://kotlinlang.org/)
+[![CI](https://github.com/readingbat/readingbat-template/actions/workflows/ci.yml/badge.svg)](https://github.com/readingbat/readingbat-template/actions/workflows/ci.yml)
 
 # ReadingBat Template
 
@@ -53,6 +54,12 @@ A `Makefile` is also provided with shorthand targets (`make build`, `make run`, 
 
 > Project metadata (`group`, `version`) is set in [`gradle.properties`](./gradle.properties).
 > Dependency versions and the `testing` bundle are defined in [`gradle/libs.versions.toml`](./gradle/libs.versions.toml).
+
+## Continuous Integration
+
+[`.github/workflows/ci.yml`](./.github/workflows/ci.yml) runs on every push and pull request to `master`.
+It builds and tests on Temurin JDK 25 (`./gradlew --rerun-tasks check`), then runs the linters
+(`./gradlew lintKotlin detekt`). Run `make tests` and `make lint` locally to catch failures before pushing.
 
 ## Content Specification
 
