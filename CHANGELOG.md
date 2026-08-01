@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.1] - 2026-08-01
+
+### Changed
+
+- Bumped dependencies: `readingbat-core` / `readingbat-kotest` 3.3.0 → 3.3.1, `core-utils` 3.2.1 → 3.2.2, and the ben-manes versions plugin 0.54.0 → 0.57.0.
+- Moved the ben-manes versions plugin to its current published coordinate: `com.github.ben-manes.versions` → `io.github.ben-manes.versions`. The catalog alias stays `ben-manes-versions`, so the `alias(libs.plugins.ben.manes.versions)` call site in `build.gradle.kts` and the `./gradlew dependencyUpdates` / `make versions` commands are unchanged.
+- Trimmed `CLAUDE.md` from 89 lines to 31, removing guidance a session can reconstruct from the repo itself: the build-command list (mirrored by the self-documenting `make help`), the architecture tour, the dependency inventory, and the step-by-step CI description. The runtime gotchas (`initTestProperties()`, suspend `correctAnswers()`), build-configuration constraints (`gradle.properties` metadata, `FAIL_ON_PROJECT_REPOS`, configuration cache), pre-push lint etiquette, and DSL conventions remain.
+
 ## [1.9.0] - 2026-07-26
 
 ### Added
@@ -98,6 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrades to Kotlin 2.1.0 / Ktor 3.0.1, `readingbat-core` 2.0.0, and various jar refreshes.
 
+[1.9.1]: https://github.com/readingbat/readingbat-template/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/readingbat/readingbat-template/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/readingbat/readingbat-template/compare/1.7.0...1.8.0
 [1.7.0]: https://github.com/readingbat/readingbat-template/compare/1.6.0...1.7.0

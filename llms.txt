@@ -63,5 +63,7 @@ The repo property in Content.kt switches between GitHubRepo (production, reads f
 - Static analysis: detekt (`dev.detekt`) and Kotlinter / ktlint (`org.jmailen.kotlinter`)
 - CI: GitHub Actions (.github/workflows/ci.yml) on pushes and PRs to master
 - Deployment: Runnable fat JAR via the Ktor plugin's buildFatJar task (build/libs/server.jar)
-- readingbat-core: 3.3.0
-- Current version: 1.9.0
+- Dependency updates: ben-manes versions plugin (`io.github.ben-manes.versions`), via `./gradlew dependencyUpdates` or `make versions`
+- readingbat-core: 3.3.1
+- core-utils: 3.2.2
+- Current version: 1.9.1
