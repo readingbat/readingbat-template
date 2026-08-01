@@ -1,5 +1,49 @@
 # Release Notes
 
+## v1.9.1 — 2026-08-01
+
+A patch release on top of 1.9.0: a dependency refresh, a build-plugin coordinate fix, and a `CLAUDE.md` trim. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**.
+
+### Highlights
+
+- **readingbat-core / readingbat-kotest 3.3.0 → 3.3.1.** A patch bump; no call-site changes were required. `correctAnswers()` remains a suspend function, as it has since 3.2.0.
+- **core-utils 3.2.1 → 3.2.2.** A patch bump on the 3.x line adopted in 1.9.0. The template's four call sites — `FileSystemSource`, `GitHubRepo`, and `OwnerType.Organization` in `Content.kt`, plus `toDoubleQuoted` in `ContentTests.kt` — compile unchanged.
+- **ben-manes versions plugin 0.54.0 → 0.57.0, with a coordinate move.** The plugin's published ID changed from `com.github.ben-manes.versions` to `io.github.ben-manes.versions`; `gradle/libs.versions.toml` now points at the new ID. The catalog alias stays `ben-manes-versions`, so `alias(libs.plugins.ben.manes.versions)` in `build.gradle.kts` is untouched and `./gradlew dependencyUpdates` / `make versions` behave exactly as before.
+- **`CLAUDE.md` trimmed 89 → 31 lines.** Removed the guidance a session can reconstruct from the repo itself — the build-command list (already surfaced by the self-documenting `make help`), the architecture tour, the dependency inventory, and the step-by-step CI description. What stays is the material the code can't teach: the `initTestProperties()` and suspend-`correctAnswers()` runtime gotchas, the `gradle.properties` / `FAIL_ON_PROJECT_REPOS` / configuration-cache build constraints, the pre-push lint etiquette, and the DSL conventions.
+
+### Dependencies
+
+| Library          | Version       |
+|------------------|---------------|
+| Kotlin           | 2.4.10        |
+| Ktor             | 3.5.1         |
+| Kotest           | 6.2.3         |
+| readingbat-core  | 3.3.1         |
+| core-utils       | 3.2.2         |
+| kotlin-logging   | 8.0.4         |
+| detekt           | 2.0.0-alpha.5 |
+| kotlinter        | 5.6.0         |
+| Gradle           | 9.6.1         |
+| JDK toolchain    | 25            |
+
+### Upgrade Notes
+
+- No source changes are required for forks that track this template — this release touches only `gradle/libs.versions.toml`, `gradle.properties`, `CLAUDE.md`, and the release docs.
+- **Forks that declare the ben-manes versions plugin themselves must update the coordinate** from `com.github.ben-manes.versions` to `io.github.ben-manes.versions`. Forks that consume it through this repo's catalog alias need no change.
+- JDK 25 remains required, unchanged from 1.8.0.
+
+### Verification
+
+- `./gradlew --rerun-tasks check` — BUILD SUCCESSFUL; all three `ContentTests` specs pass (`Test all challenges`, `Test with correct answers`, `Test individual challenges`), 3 tests, 0 failures, 0 errors.
+- `./gradlew buildFatJar` — BUILD SUCCESSFUL; produces `build/libs/server.jar`.
+- `./gradlew lintKotlin detekt` — both checks run cleanly.
+- `./gradlew dependencyUpdates` — BUILD SUCCESSFUL under the new plugin coordinate, confirming the ID move resolves.
+- `build/libs/readingbat-template-1.9.1.jar` confirms the `gradle.properties` version bump took effect.
+
+**Full Changelog:** https://github.com/readingbat/readingbat-template/compare/1.9.0...1.9.1
+
+---
+
 ## v1.9.0 — 2026-07-26
 
 A dependency-refresh and CI release on top of 1.8.0. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**.
