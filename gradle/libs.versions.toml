@@ -7,9 +7,9 @@ kotlin = "2.4.10"
 kotlinter = "5.6.0"
 ktor = "3.5.1"
 logging = "8.0.4"
-readingbat = "3.3.0"
-utils = "3.2.1"
-versions = "0.54.0"
+readingbat = "3.3.1"
+utils = "3.2.2"
+versions = "0.57.0"
 
 [libraries]
 core-utils = { module = "com.pambrose.common-utils:core-utils", version.ref = "utils" }
@@ -33,7 +33,7 @@ testing = [
 ]
 
 [plugins]
-ben-manes-versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
+ben-manes-versions = { id = "io.github.ben-manes.versions", version.ref = "versions" }
 detekt = { id = "dev.detekt", version.ref = "detekt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
