@@ -55,6 +55,10 @@ A `Makefile` is also provided with shorthand targets (`make build`, `make run`, 
 > Project metadata (`group`, `version`) is set in [`gradle.properties`](./gradle.properties).
 > Dependency versions and the `testing` bundle are defined in [`gradle/libs.versions.toml`](./gradle/libs.versions.toml).
 
+> Line endings are normalized by [`.gitattributes`](./.gitattributes) — `gradlew` stays `lf`, `*.bat` stays `crlf`,
+> and `*.jar` / `*.png` are treated as binary. Windows contributors may see a one-time renormalization on first
+> checkout; `git add --renormalize .` clears any spurious whole-file diffs.
+
 ## Continuous Integration
 
 [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) runs on every push and pull request to `master`.

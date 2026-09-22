@@ -1,5 +1,56 @@
 # Release Notes
 
+## v1.10.0 — 2026-09-21
+
+A dependency-refresh release on top of 1.9.1, plus cross-platform line-ending normalization. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**. The minor-version bump reflects the minor bumps in Ktor and readingbat-core rather than any change in this repo's own API.
+
+### Highlights
+
+- **readingbat-core / readingbat-kotest 3.3.1 → 3.4.0.** A minor bump; no call-site changes were required. `correctAnswers()` remains a suspend function, as it has since 3.2.0, so `ContentTests.kt` keeps its `runBlocking { … }` wrapper.
+- **Ktor 3.5.1 → 3.6.0.** The catalog and readingbat-core 3.4.0 agree on this version — `runtimeClasspath` resolves `io.ktor:ktor-server-core` to 3.6.0 with no conflict resolution in play.
+- **Kotest 6.2.3 → 6.2.5.** A patch bump; the `libs.bundles.testing` bundle and the StringSpec/JUnit5 setup are unchanged.
+- **Gradle 9.6.1 → 9.7.1.** The wrapper jar, `gradle-wrapper.properties`, and the `gradle-wrapper` catalog key (consumed by the Makefile's version guard) all move together. The configuration cache continues to store and reuse entries.
+- **Static-analysis and tooling bumps.** detekt 2.0.0-alpha.5 → 2.0.0-alpha.6, Kotlinter 5.6.0 → 5.7.0, and the ben-manes versions plugin 0.57.0 → 0.64.0. Both linters re-run clean under the new versions, so no `.editorconfig` changes were needed and the repo still requires no detekt baseline.
+- **`.gitattributes` added.** Git now normalizes line endings per file type instead of relying on each contributor's `core.autocrlf` setting: `gradlew` is pinned to `lf` so the launcher stays executable on Linux and macOS after a Windows checkout, `*.bat` to `crlf`, and `*.jar` / `*.png` are marked `binary` so Git stops attempting text diffs or EOL conversion on them — which also keeps `gradle/wrapper/gradle-wrapper.jar` intact across wrapper upgrades.
+
+### Dependencies
+
+| Library          | Version       |
+|------------------|---------------|
+| Kotlin           | 2.4.10        |
+| Ktor             | 3.6.0         |
+| Kotest           | 6.2.5         |
+| readingbat-core  | 3.4.0         |
+| core-utils       | 3.2.2         |
+| kotlin-logging   | 8.0.4         |
+| detekt           | 2.0.0-alpha.6 |
+| kotlinter        | 5.7.0         |
+| Gradle           | 9.7.1         |
+| JDK toolchain    | 25            |
+
+Unchanged from 1.9.1: Kotlin, core-utils, kotlin-logging, and the JDK toolchain.
+
+### Upgrade Notes
+
+- No source changes are required for forks that track this template — this release touches only `gradle/libs.versions.toml`, `gradle/wrapper/*`, `gradle.properties`, `.gitattributes`, and the docs.
+- **Re-run `./gradlew --version` after pulling** to let the new wrapper (9.7.1) download on first use. Forks that track their own Gradle version should bump the `gradle-wrapper` key in `gradle/libs.versions.toml` and run `make upgrade-wrapper`, which drives `./gradlew wrapper` from that key.
+- **Windows contributors may see a one-time line-ending renormalization** the first time they check out with `.gitattributes` in place. `git add --renormalize .` resolves any spurious whole-file diffs.
+- JDK 25 remains required, unchanged from 1.8.0.
+- Deliberately not adopted in this release: Kotlin 2.4.20 and core-utils 3.2.3 / 4.1.0, all of which `./gradlew dependencyUpdates` reports as available.
+
+### Verification
+
+- `./gradlew --rerun-tasks check` — BUILD SUCCESSFUL; all three `ContentTests` specs pass (`Test all challenges`, `Test with correct answers`, `Test individual challenges`), 3 tests, 0 failures, 0 errors.
+- `./gradlew lintKotlin detekt` — BUILD SUCCESSFUL; both checks run cleanly.
+- `./gradlew buildFatJar` — BUILD SUCCESSFUL; produces `build/libs/server.jar`.
+- `./gradlew dependencyUpdates` — BUILD SUCCESSFUL under the bumped plugin version.
+- `./gradlew --version` reports Gradle 9.7.1, confirming the wrapper upgrade took effect.
+- `build/libs/readingbat-template-1.10.0.jar` confirms the `gradle.properties` version bump took effect.
+
+**Full Changelog:** https://github.com/readingbat/readingbat-template/compare/1.9.1...1.10.0
+
+---
+
 ## v1.9.1 — 2026-08-01
 
 A patch release on top of 1.9.0: a dependency refresh, a build-plugin coordinate fix, and a `CLAUDE.md` trim. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**.

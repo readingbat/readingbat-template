@@ -20,6 +20,10 @@ As of readingbat-core 3.2.0, `correctAnswers` is a suspend function — call it 
 
 Gradle's configuration cache is enabled (`org.gradle.configuration-cache=true` in `gradle.properties`) — keep new build logic configuration-cache-compatible.
 
+`.gitattributes` pins `gradlew` to `lf` and marks `*.jar` / `*.png` `binary`, so the wrapper jar is never EOL-mangled in a checkout.
+
+The Gradle version is driven by the `gradle-wrapper` key in `gradle/libs.versions.toml`, not by `gradle-wrapper.properties` directly. To upgrade: bump that key, then run `make upgrade-wrapper` — it runs `./gradlew wrapper` twice, which is Gradle's documented procedure (the first pass rewrites the properties with the old jar, the second regenerates the jar itself). Don't hand-edit `distributionUrl` or the jar.
+
 ## Continuous Integration
 
 Run `make tests` and `make lint` locally before pushing — a formatting violation fails CI just as a test failure does.
