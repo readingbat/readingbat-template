@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2026-09-21
+
+### Added
+
+- `.gitattributes` for cross-platform line-ending normalization: `gradlew` is pinned to `lf`, `*.bat` to `crlf`, and `*.jar` / `*.png` are marked `binary` so Git stops attempting text diffs or EOL conversion on them.
+
+### Changed
+
+- Bumped dependencies: `readingbat-core` / `readingbat-kotest` 3.3.1 → 3.4.0, Ktor 3.5.1 → 3.6.0, Kotest 6.2.3 → 6.2.5, detekt 2.0.0-alpha.5 → 2.0.0-alpha.6, Kotlinter 5.6.0 → 5.7.0, and the ben-manes versions plugin 0.57.0 → 0.64.0.
+- Upgraded the Gradle wrapper 9.6.1 → 9.7.1 (`gradle-wrapper.properties`, `gradle-wrapper.jar`, and the `gradle-wrapper` key in `gradle/libs.versions.toml`).
+- Bumped the project version 1.9.1 → 1.10.0 in `gradle.properties`.
+
 ## [1.9.1] - 2026-08-01
 
 ### Changed
@@ -106,6 +118,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrades to Kotlin 2.1.0 / Ktor 3.0.1, `readingbat-core` 2.0.0, and various jar refreshes.
 
+[1.10.0]: https://github.com/readingbat/readingbat-template/compare/1.9.1...1.10.0
 [1.9.1]: https://github.com/readingbat/readingbat-template/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/readingbat/readingbat-template/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/readingbat/readingbat-template/compare/1.7.0...1.8.0
