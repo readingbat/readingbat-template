@@ -45,7 +45,8 @@ See the wiki for more details:
 | `./gradlew build --continuous -xtest` | Continuous compile on file changes |
 | `./gradlew lintKotlin detekt` | Run Kotlinter (ktlint) and detekt |
 | `./gradlew formatKotlin` | Auto-format Kotlin sources with ktlint |
-| `./gradlew dependencyUpdates` | Check for dependency updates |
+| `./gradlew dependencyUpdates` | List outdated dependencies (`make versions`) |
+| `./gradlew dependencyUpdates --output-formatter=plain` | Full dependency report, up-to-date ones included (`make versions-all`) |
 
 A `Makefile` is also provided with shorthand targets (`make build`, `make run`, `make tests`, `make lint`, `make format`, etc.). Run `make help` to see every documented target.
 
