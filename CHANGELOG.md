@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-10-13
+
+### Added
+
+- `make versions-all` target: the ben-manes plugin's full plain report (`--output-formatter=plain`), up-to-date dependencies included.
+
+### Changed
+
+- Bumped dependencies: `readingbat-core` / `readingbat-kotest` 3.4.0 → 3.5.0, `core-utils` 3.2.2 → 5.1.1, Kotlin 2.4.10 → 2.4.21, and the ben-manes versions plugin 0.64.0 → 0.66.0.
+- Upgraded the Gradle wrapper 9.7.1 → 9.8.1 (`gradle-wrapper.properties`, `gradle-wrapper.jar`, `gradlew.bat`, and the `gradle-wrapper` key in `gradle/libs.versions.toml`).
+- `make versions` now lists only the dependencies that are behind, any that could not be checked, and a newer Gradle release, via a custom `outputFormatter` on `DependencyUpdatesTask` in `build.gradle.kts`. It no longer writes `build/dependencyUpdates/report.txt`; `make versions-all` still does.
+- Bumped the project version 1.10.0 → 1.11.0 in `gradle.properties`.
+- Set `org.gradle.jvmargs` in `gradle.properties`: a 4 GB heap for the Gradle and Kotlin daemons, a heap dump on `OutOfMemoryError`, and UTF-8 file encoding.
+
 ## [1.10.0] - 2026-09-21
 
 ### Added
@@ -118,6 +132,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Upgrades to Kotlin 2.1.0 / Ktor 3.0.1, `readingbat-core` 2.0.0, and various jar refreshes.
 
+[1.11.0]: https://github.com/readingbat/readingbat-template/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/readingbat/readingbat-template/compare/1.9.1...1.10.0
 [1.9.1]: https://github.com/readingbat/readingbat-template/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/readingbat/readingbat-template/compare/1.8.0...1.9.0

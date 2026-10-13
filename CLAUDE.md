@@ -24,6 +24,8 @@ Gradle's configuration cache is enabled (`org.gradle.configuration-cache=true` i
 
 The Gradle version is driven by the `gradle-wrapper` key in `gradle/libs.versions.toml`, not by `gradle-wrapper.properties` directly. To upgrade: bump that key, then run `make upgrade-wrapper` — it runs `./gradlew wrapper` twice, which is Gradle's documented procedure (the first pass rewrites the properties with the old jar, the second regenerates the jar itself). Don't hand-edit `distributionUrl` or the jar.
 
+`make versions` prints only outdated dependencies (plus a newer Gradle release) through the custom `outputFormatter` in `configureVersions()` in `build.gradle.kts`; that formatter replaces the plugin's report, so no `build/dependencyUpdates/report.txt` is written. `make versions-all` passes `--output-formatter=plain` for the plugin's full report, up-to-date dependencies included.
+
 ## Continuous Integration
 
 Run `make tests` and `make lint` locally before pushing — a formatting violation fails CI just as a test failure does.

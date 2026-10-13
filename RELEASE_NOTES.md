@@ -1,5 +1,61 @@
 # Release Notes
 
+## v1.11.0 — 2026-10-13
+
+A dependency-refresh release on top of 1.10.0 that also reworks how `make versions` reports dependency updates. There are no DSL, content, or runtime source changes. Existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**. The minor-version bump reflects the readingbat-core minor bump, the core-utils major-version jump, and the new `make versions-all` target.
+
+### Highlights
+
+- **`make versions` lists only what is behind.** A custom `outputFormatter` on `DependencyUpdatesTask` (in `configureVersions()` in `build.gradle.kts`) replaces the plugin's report. It prints one line per outdated dependency (`group:name current -> latest`), a `?` line for each dependency that could not be checked, a line for a newer Gradle release, and `All dependencies are up to date` when nothing is behind. The existing pre-release filter is unchanged.
+- **New `make versions-all` target.** It runs the same task with `--output-formatter=plain` to get the plugin's full report, which also lists every up-to-date dependency. Only this target writes `build/dependencyUpdates/report.txt` now.
+- **readingbat-core / readingbat-kotest 3.4.0 → 3.5.0.** A minor bump; no call-site changes were required. `correctAnswers()` is still a suspend function, so `ContentTests.kt` keeps its `runBlocking { … }` wrapper.
+- **core-utils 3.2.2 → 5.1.1.** This is two major versions. `Content.kt` (`FileSystemSource`, `GitHubRepo`, `OwnerType`) and `ContentTests.kt` (`toDoubleQuoted`) compile unchanged. readingbat-core 3.5.0 itself moved to the `common-utils` 5.1.1 line, so the whole runtime classpath agrees on 5.1.1 and no conflict resolution is involved.
+- **Kotlin 2.4.10 → 2.4.21.** A patch bump. The `-Xreturn-value-checker=check` compiler flag on `compileKotlin` still reports nothing.
+- **Gradle 9.7.1 → 9.8.1.** The wrapper jar, `gradle-wrapper.properties`, `gradlew.bat`, and the `gradle-wrapper` catalog key all moved together via `make upgrade-wrapper`. The configuration cache still stores and reuses entries.
+- **ben-manes versions plugin 0.64.0 → 0.66.0.**
+- **Gradle daemon JVM args.** `gradle.properties` now sets `org.gradle.jvmargs` to give the Gradle and Kotlin daemons a 4 GB heap, write a heap dump on `OutOfMemoryError`, and use UTF-8 file encoding.
+
+### Dependencies
+
+| Library          | Version       |
+|------------------|---------------|
+| Kotlin           | 2.4.21        |
+| Ktor             | 3.6.0         |
+| Kotest           | 6.2.5         |
+| readingbat-core  | 3.5.0         |
+| core-utils       | 5.1.1         |
+| kotlin-logging   | 8.0.4         |
+| detekt           | 2.0.0-alpha.6 |
+| kotlinter        | 5.7.0         |
+| Gradle           | 9.8.1         |
+| JDK toolchain    | 25            |
+
+Unchanged from 1.10.0: Ktor, Kotest, kotlin-logging, detekt, kotlinter, and the JDK toolchain.
+
+### Upgrade Notes
+
+- No source changes are required for forks that track this template. This release touches only `build.gradle.kts` (the `dependencyUpdates` formatter), the `Makefile`, `gradle/libs.versions.toml`, `gradle/wrapper/*`, `gradlew.bat`, `gradle.properties`, and the docs.
+- **core-utils 5.1.1 removes or changes some public API**, including `ScopeFunctionsKt`, `SingleAssignVar.ThreadSafeSingleAssignVar`, `MiscFuncs.waitForPortAvailable` (which now returns `Boolean`), `toCreated(LocalDateTime)`, and the `SecureObjectInputStream`, `NonNullableAtomicReferenceDelegate`, and `SingleSetAtomicReferenceDelegate` constructors. This template uses none of them. Forks that call core-utils directly beyond what `Content.kt` uses should check their call sites against that list.
+- **The new `org.gradle.jvmargs` asks for a 4 GB daemon heap.** On a machine with little memory, lower `-Xmx` in `gradle.properties`.
+- **Re-run `./gradlew --version` after pulling** so the new wrapper (9.8.1) downloads on first use.
+- Under Gradle 9.8.1 every build prints "Deprecated Gradle features were used in this build, making it incompatible with Gradle 10". The cause is detekt 2.0.0-alpha.6 calling `Configuration.setVisible()`, which Gradle 9.8 deprecated and plans to remove in Gradle 11. It's harmless for now and should go away with a later detekt release.
+- `make versions` no longer writes `build/dependencyUpdates/report.txt`. Use `make versions-all` if you rely on that file.
+- JDK 25 is still required, unchanged since 1.8.0.
+
+### Verification
+
+- `./gradlew dependencyInsight` shows readingbat-core 3.5.0 and every `common-utils` module resolving to 5.1.1 with no conflict resolution, and Ktor resolving to 3.6.0.
+- `make tests` (`./gradlew --rerun-tasks check`): BUILD SUCCESSFUL. All three `ContentTests` specs pass (`Test all challenges`, `Test with correct answers`, `Test individual challenges`).
+- `make lint` (`./gradlew lintKotlin detekt`): BUILD SUCCESSFUL.
+- `make uberjar` (`./gradlew buildFatJar`): BUILD SUCCESSFUL and produces `build/libs/server.jar`. `java -jar build/libs/server.jar` starts in about 2s, and `/`, `/content/python`, `/content/java`, and `/content/kotlin` all return 200 with no exceptions in the log.
+- `make versions` prints `All dependencies are up to date`. `make versions-all` writes `build/dependencyUpdates/report.txt`.
+- `./gradlew --version` reports Gradle 9.8.1, so the wrapper upgrade took effect.
+- `build/libs/readingbat-template-1.11.0.jar` shows the `gradle.properties` version bump took effect.
+
+**Full Changelog:** https://github.com/readingbat/readingbat-template/compare/1.10.0...1.11.0
+
+---
+
 ## v1.10.0 — 2026-09-21
 
 A dependency-refresh release on top of 1.9.1, plus cross-platform line-ending normalization. There are no DSL, content, or runtime source changes — existing `Content.kt` definitions compile and run unchanged, and the build still targets **JDK 25**. The minor-version bump reflects the minor bumps in Ktor and readingbat-core rather than any change in this repo's own API.
